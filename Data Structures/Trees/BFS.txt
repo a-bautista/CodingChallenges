@@ -1,0 +1,4 @@
+BFS has a time complexity of O(V+E) where V is a vertice and E is an edge. It is useful for finding the shortest path on unweighted graphs.
+BFS explores its neighbors, then it explores the children of its neighbors.
+It uses a queue to explore what node should be explored next.
+

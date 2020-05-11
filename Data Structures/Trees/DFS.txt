@@ -1,0 +1,2 @@
+DFS has a time complexity of O(V+E) where V is a vertice and E is an edge. It is useful for finding the depth of a path.
+DFS explores the children of 1 node and then it goes deep until there is no more nodes to travers.

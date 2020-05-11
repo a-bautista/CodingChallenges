@@ -1,3 +1,15 @@
+"""
+    1. For each bike and worker, we need to create the Manhattan distance and store it in a list with
+        [(distance, worker, bike)]
+    2. Create a list with -1 values with the length of workers which will contain the worker assigned to each bike.
+    3. Create a set that will contain the bikes that have been already taken.
+    4. Sort the distances table.
+    5. If the result[worker] == - 1 and the bike is not contained in the set bike then add the worker and bike to the list.
+    6. Mark the bike that has been already taken in the set.
+    7. Return the list of worker and bikes.
+
+"""
+
 from typing import List
 
 def main():
@@ -19,7 +31,8 @@ class Solution:
         distances.sort()
 
         result = [-1] * len(workers)
-        bike_taken = set() # Mark a bike as taken by putting it in this set as we traverse the tuples from shortest distance onwards.
+        bike_taken = set() # Mark a bike as taken by putting it in this set as we traverse the tuples from shortest
+                           # distance onwards.
         for distance, worker, bike in distances:
             # print(distance, i, j)
             if result[worker] == -1 and bike not in bike_taken:

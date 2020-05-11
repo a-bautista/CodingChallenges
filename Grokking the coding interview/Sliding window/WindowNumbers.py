@@ -1,8 +1,10 @@
 def main():
     result1 = solve([8,3,4,5],2)
     result2 = solve_pythonistic([8,3,4,5],2)
+    #result3 = my_solution([8,3,4,5],2)
     print(result1)
     print(result2)
+    #print(result3)
 
 def solve_pythonistic(nums,k):
     n = len(nums)
@@ -19,6 +21,21 @@ def solve(nums, k):
     for i in range(n -k +1):
         values.append(max(nums[i:i+k]))
     return values
+
+def my_solution(nums, k):
+    '''Needs debugging'''
+    list1 = []
+    list2 =[]
+    window = 0
+    for i in range(len(nums)):
+        list1.append(nums[i])
+        if window >= k-1:
+            list2.append(max(list1[i:k]))
+            list1 = []
+            window = 0
+        window += 1
+    return list2
+
 
 if __name__ == '__main__':
     main()

@@ -1,0 +1,4 @@
+When you want to find a linear order of elements that have dependencies on each other, that is, elements A, B and C are airports and in order
+to go from A to C you must stop at point B, thus we say C depends on B which depends on A.
+
+Directed graph: A graph with unidirectional edges such that its edges (U,V) are aimed one after another ( U -> V ).
