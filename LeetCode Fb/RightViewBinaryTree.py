@@ -34,6 +34,42 @@ def tree_right_view(root):
                 queue.append(currentNode.right)
     return result
 
+# Leetcode solution
+#from collections import deque
+#class Solution:
+#    def rightSideView(self, TreeNode):
+#        # data structure to store the result
+#        result = []
+#
+#        # test case
+#        if not TreeNode:
+#            return result
+#
+#
+#        queue = deque()
+#        queue.append(TreeNode)
+#        
+#        while queue:
+#            # calculate the next level            
+#            size = len(queue)
+#            # iterate through the next level
+#            for i in range(0, size):
+#                # get the value of the node from the current level
+#                node = queue.popleft()
+#                # if we find the last node
+#                if i == size -1:
+#                    results.append(node.val)
+#               
+#                # get the children of the current node in pre-order
+#
+#                if node.left: 
+#                    queue.append(node.left)
+#
+#                if node.right:
+#                    queue.append(node.right)
+#
+#       return result        
+
 
 def main():
     # root = TreeNode(12)
