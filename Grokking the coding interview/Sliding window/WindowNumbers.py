@@ -25,7 +25,7 @@ def solve(nums, k):
 def my_solution(nums, k):
     '''Needs debugging'''
     list1 = []
-    list2 =[]
+    list2 = []
     window = 0
     for i in range(len(nums)):
         list1.append(nums[i])
@@ -54,7 +54,7 @@ if __name__ == '__main__':
 
   4. If 1 < k < len(array)-1 then do a double pointer solution to keep the time complexity in the O(n) time complexity.
 
-  5. While the first pointer < than len(array)-1 then set the subarray to the k-1 length and then do an increment after each pass.
+  5. While the first pointer <  len(array)-1 then set the subarray to the k-1 length and then do an increment after each pass.
 
   6. Max value will be obtained by using the max function or printing 
 

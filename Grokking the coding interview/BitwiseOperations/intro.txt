@@ -1,0 +1,30 @@
+The most significant bit is the bit located at the very left.
+The least significant bit is the bit located at the very right.
+
+Left shifts
+    The most significant bit is lost and a 0 is inserted to the right.
+
+    0010 << 1 -> 0100
+    0010 << 2 -> 1000
+
+
+Logical right shifts
+    The least significant bit is lost and a 0 is inserted to the left.
+
+    0010 >>> 1 -> 0001
+    0010 >>> 2 -> 0000
+
+
+Arithmetic right shifts
+    The least significant bit is lost and the most significant bit is copied.
+
+    1011 >> 1 -> 1101
+    1011 >> 2 -> 1110
+
+
+
+Arithmetic right shifts
+
+
+
+

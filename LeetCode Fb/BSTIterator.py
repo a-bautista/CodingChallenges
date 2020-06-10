@@ -24,3 +24,5 @@ def main():
     obj = BSTIterator(7)
     param_1 = obj.next()
 # param_2 = obj.hasNext()
+
+main()

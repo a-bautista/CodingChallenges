@@ -1,0 +1,5 @@
+Depth First Search is a traversal technique in which you
+use recursion and a stack to keep track of the all the
+previous nodes while traversing the tree. This technique is
+suitable when you are trying to find a path or solve a puzzle
+problem.

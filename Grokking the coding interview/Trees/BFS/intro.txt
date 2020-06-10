@@ -1,0 +1,5 @@
+Breadth First Search (BFS) is used to traverse the tree
+by exploring the neighbors of the root node. BFS is more
+suitable for searching vertices which are closer to the given source.
+In BFS, we use a queue to keep track of all the nodes
+before going to the next level of nodes. 

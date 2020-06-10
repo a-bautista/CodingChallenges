@@ -1,6 +1,6 @@
 #from arrayStack import Empty
 
-from AmazonCommonProblems import *
+#from AmazonCommonProblems import *
 
 def main():
     stack = ArrayStack()

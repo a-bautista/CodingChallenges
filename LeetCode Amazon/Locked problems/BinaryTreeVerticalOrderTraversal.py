@@ -96,7 +96,7 @@ class Solution:
         level = 0
         self.traverse_preorder(self,root, level, hash_map)  # this is Solution.traverse_preorder
 
-        print(hash_map)
+        #print(hash_map)
         for index, value in enumerate(sorted(hash_map)):
             # print(index, value)
             for i in hash_map[value]:
