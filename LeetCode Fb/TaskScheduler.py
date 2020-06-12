@@ -16,20 +16,81 @@
     The number of tasks is in the range [1, 10000].
     The integer n is in the range [0, 100].
 
+    Further explanation: 
+        
+        The trick is in this line: there is a non-negative cooling interval n that means between two same tasks, there must be at least n intervals
+        that CPU are doing different tasks or just be idle and this means:
+        
+        AAABBB, n=2
+        
+        A -> B -> idle -> A -> B -> idle -> A -> B
+             1     2           1     2
+             
+        Every second time, you need to put it in idle because we have a repeated value.
+        
+        ABCABC, n=2 (best case)
+        
+        A -> B -> C -> A -> B -> C
+             1    2    1    2
+             
+        We don't need to put the CPU in idle because we have different tasks.
+        
+        AAA, n=2 (worst case)
+        
+        A -> idle -> idle -> A -> idle -> idle -> A
+               1       2            1       2
+        
+        AAAB, n=2
+        
+        A -> B -> idle -> A -> idle -> idle -> A
+             1      2            1       2
+        
+    
+        This problem follows the greedy approach because we need to look for the most repeated task.
+    
+        We need to calculate the idle time: 
+            
+            idle_time = ( max_occurring_task - 1 )
+            
+        We need to calculate the interval time:
+        
+            intervals = idle time * ( n + 1 )
+            
+        We need to calculate the number of times the max count appeared.
+        
+            max_count_tasks = number_max_occurring_tasks
+            
+        As a side note, the interval might not always be true because of this test case: 
+        
+            ABCABCDEFG, n=2
+            
+        A B C A B C D E F G, this doesn't follow the interval approach, so we need to use the max(len(tasks), intervals)
+        
+        
+        
+    
 """
 from collections import Counter
 
 def leastInterval(tasks, n):
 
+    # convert the Counter of values to a list
     tasks_count = list(Counter(tasks).values())
 
-    max_count = max(tasks_count)
+    # get the max value that appear in the counter(converted to a list)
+    max_count = max(list(tasks_count))
 
+    # determine the idle time that will occur in the CPU
     idle_time = max_count - 1
 
-    max_count_tasks = tasks_count.count(max_count) # count the number of times the max_count appears in the list
+    # count the number of times the max_count appears in the list
+    max_count_tasks = tasks_count.count(max_count)
 
-    return max(len(tasks), idle_time * (n + 1) + max_count_tasks)
+    interval = idle_time * (n + 1)
+
+    return max(len(tasks), interval + max_count_tasks)
+
+    #return max(len(tasks), idle_time * (n + 1) + max_count_tasks)
 
 def main():
     #tasks = ["A", "B", "C","A","B","C"]
