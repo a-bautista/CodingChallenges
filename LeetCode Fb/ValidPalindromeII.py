@@ -15,7 +15,7 @@
 
 """
 
-class Solution(object):
+class Solution:
     def validPalindrome(self, s):
         """
         :type s: str
@@ -29,16 +29,17 @@ class Solution(object):
                 one, two = s[left:right], s[left + 1:right + 1]
                 # [::-1] indicates to switch the last letter with the
                 # second last letter, i.e., [bi] -> [ib]
-                # print(one == one[::-1])
-                # print(two)
-                # print(two[::-1])
+                print(one)
+                #print(one == one[::-1])
+                print(two)
+                print(two[::-1])
                 return one == one[::-1] or two == two[::-1]
             left, right = left + 1, right - 1
         return True
 
 
 def main():
-    s = 'axbbia'
+    s = 'abbx'
     solution = Solution()
     res = solution.validPalindrome(s)
     print(res)
@@ -53,6 +54,9 @@ main()
     two[::-1] = 'ib'
     
     final result is abiba which is palindrome 
+    
+    Time complexity: O(N)
+    Space complexity: O(N)
     
 
 '''

@@ -48,5 +48,10 @@ def main():
     res = solution.letterCombinations(digits)
     print(res)
 
-
 main()
+
+"""
+    Time complexity: O((3**N)*(4**N))) where n is the number of digits in the input that maps to 3 letters and M is the 
+    input of digits that maps to 4 letters
+    Space complexity: O((3**N)*(4**N)))
+"""

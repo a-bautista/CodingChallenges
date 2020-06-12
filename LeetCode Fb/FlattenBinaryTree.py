@@ -107,7 +107,6 @@ class TreeNode:
 
         return result
 
-    # flatten
     def flattenTree(self, root):
 
         # edge case: handle null scenario

@@ -58,12 +58,16 @@
 from collections import Counter
 class Solution:
     def findAnagrams(self, s, substring):
+
         ns, n_substring = len(s), len(substring)
+        # constraint
         if ns < n_substring:
             return []
 
         # count the number of elements in the p string
         substring_count = Counter(substring)
+
+
         s_count = Counter()
 
         output = []
@@ -95,3 +99,8 @@ def main():
 
 main()
 
+
+"""
+    Time complexity: O(len(s))
+    Space complexity: O(k) where k is the size of the window
+"""

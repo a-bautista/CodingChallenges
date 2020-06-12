@@ -36,3 +36,8 @@ def main():
     print(res)
 
 main()
+
+"""
+    Time complexity: O(N)
+    Space complexity: O(1)
+"""

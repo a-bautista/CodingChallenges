@@ -93,6 +93,10 @@ def main():
     deserializedTree.print_preorder(deserializedTreeNodes)
     #print(deserializedTreeNodes.print_preorder)
 
-
-
 main()
+
+
+"""
+    Time complexity: O(N)where n is the number of nodes
+    Space complexity: O(N)
+"""

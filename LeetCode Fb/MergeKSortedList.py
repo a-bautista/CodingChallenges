@@ -38,8 +38,6 @@ def main():
     # node6 = ListNode(4)
     # node7 = ListNode(5)
     #
-    # # [2,3,4,5]
-    #
     # lkList2.head = node5
     # node5.next = node6
     # node6.next = node7
@@ -101,30 +99,58 @@ class LinkedList:
 #             point.next=l1
 #         return head.next
 
+import heapq
+def mergeKLists(lists):
+    if len(lists) == 0:
+        return None
+
+    heap = [(lists[i].val, lists[i]) for i in range(len(lists)) if lists[i] is not None]
+    heapq.heapify(heap)
+
+    head, out = None, None
+
+    while len(heap) > 0:
+        x, n = heapq.heappop(heap)
+
+        if out is None:
+            out = ListNode(x)
+            head = out
+        else:
+            out.next = ListNode(x)
+            out = out.next
+
+        if n.next is not None:
+            heapq.heappush(heap, (n.next.val, n.next))
+
+    return head
+
+
 import queue
 
-
 class Solution:
-    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
-        sorted_list_head = sorted_list_tail = ListNode(0)
+
+    def add_node_in_pq(self, idx, node, pq):
+        #print(pq.queue)
+        if node:
+            pq.put((node.val, idx, node))
+
+    def mergeKLists(self, lists):
 
         pq = queue.PriorityQueue()
-
-        def add_node_in_pq(idx, node):
-            if node:
-                pq.put((node.val, idx, node))
+        sorted_list_head = sorted_list_tail = ListNode(0)
 
         for idx, node in enumerate(lists):
-            add_node_in_pq(idx, node)
+            self.add_node_in_pq(idx, node, pq)
 
         while not pq.empty():
             _, idx, node = pq.get()
-            add_node_in_pq(idx, node.next)
+            self.add_node_in_pq(idx, node.next, pq)
             node.next = None
             sorted_list_tail.next = node
             sorted_list_tail = sorted_list_tail.next
-
         return sorted_list_head.next
+
+
 
 
 # class SolutionMergeListsDefinitive:
@@ -179,7 +205,45 @@ def mergeKListsBruteForce(self, lists):
 
 if  __name__ == '__main__':
     main()
+'''
+    
+    [(1, 0, [ 1, next: [ 4, next: [ 5, next: None]]]), 
+     (1, 1, [ 1, next: [ 3, next: [ 4, next: None]]]), 
+     (2, 2, [ 2, next: [ 6, next: None]])]
+ 
+ 
+    [(1, 1, [ 1, next: [ 3, next: [ 4, next: None]]]), 
+     (2, 2, [ 2, next: [ 6, next: None]]), 
+     (4, 0, [ 4, next: [ 5, next: None]])]
+ 
+ 
+    [(2, 2, [ 2, next: [ 6, next: None]]), 
+     (4, 0, [ 4, next: [ 5, next: None]]), 
+     (3, 1, [ 3, next: [ 4, next: None]])]
+ 
+ 
+    [(3, 1, [ 3, next: [ 4, next: None]]), 
+     (4, 0, [ 4, next: [ 5, next: None]]), 
+     (6, 2, [ 6, next: None])]
+ 
+ 
+    [(4, 0, [ 4, next: [ 5, next: None]]), 
+    (6, 2, [ 6, next: None]), 
+    (4, 1, [ 4, next: None])]
+ 
+ 
+    [(4, 1, [ 4, next: None]), 
+    (6, 2, [ 6, next: None]), 
+    (5, 0, [ 5, next: None])]
+ 
+ 
+    [(5, 0, [ 5, next: None]), 
+    (6, 2, [ 6, next: None])]
 
+
+    [(6, 2, [ 6, next: None])]
+
+'''
 
 '''
    For the MergeKLists solution, we can use the brute force approach where we collect each element of each list and we can sort

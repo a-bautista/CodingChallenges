@@ -34,6 +34,6 @@ def main():
 main()
 
 """
-    Time complexity : O(N logk).
+    Time complexity : O(N *log (k)).
     Space complexity : O(k) to store the heap elements. 
 """
