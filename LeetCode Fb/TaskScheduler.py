@@ -78,7 +78,7 @@ def leastInterval(tasks, n):
     tasks_count = list(Counter(tasks).values())
 
     # get the max value that appear in the counter(converted to a list)
-    max_count = max(list(tasks_count))
+    max_count = max(tasks_count)
 
     # determine the idle time that will occur in the CPU
     idle_time = max_count - 1
