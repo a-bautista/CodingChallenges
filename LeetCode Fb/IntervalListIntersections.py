@@ -1,5 +1,6 @@
+from typing import List
 class Solution:
-    def intervalIntersection(self, A, B):
+    def intervalIntersection(self, A: List[List[int]], B: List[List[int]]) -> List[List[int]]:
         ans = []
         i = j = 0
 
@@ -17,5 +18,9 @@ class Solution:
                 i += 1
             else:
                 j += 1
-
         return ans
+
+'''
+    Time complexity: O(M+N)
+    Space complexity: O(M+N)
+'''

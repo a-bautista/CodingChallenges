@@ -38,3 +38,11 @@ def main():
   print(search_rotated_array([4, 5, 7, 9, 10, -1, 2], 10))
 
 main()
+
+
+'''
+  Time complexity: O(Log(N)) because it is binary search
+  Space complexity: O(1)
+  
+  
+'''

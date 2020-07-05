@@ -41,7 +41,10 @@ def solution(m):
 
 
 if __name__ == '__main__':
-    treasure_map = [['O', 'O', 'O', 'O'], ['D', 'O', 'D', 'O'], ['O', 'O', 'O', 'O'], ['X', 'D', 'D', 'O']]
+    treasure_map = [['O', 'O', 'O', 'O'],
+                    ['D', 'O', 'D', 'O'],
+                    ['O', 'O', 'O', 'O'],
+                    ['X', 'D', 'D', 'O']]
 
     res = solution(treasure_map)
     print("Result: ", res)

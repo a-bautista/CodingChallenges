@@ -20,7 +20,7 @@
     rows * columns
 
 """
-
+'''
 class Solution:
     def multiply(self, A, B):
         if A is None or B is None:
@@ -69,6 +69,7 @@ class Solution:
                     c[i][j] += tableA[i][k] * tableB[k][j]
         return c
 
+'''
 # class Solution(object):
 #     def multiply(self, A, B):
 #         """
@@ -114,8 +115,101 @@ class Solution:
 #                             AB[i][k] += A[i][j] * B[j][k]
 #         return AB
 
+class Solution:
+    def solve(self, A, B):
+
+        n, m, k = len(A), len(A[0]), len(B[0])
+
+        # get the non zero values in a grouped row vector format for matrix A
+
+        #      0  1  2
+        # 0- [ 1, 0, 0]
+        # 1- [-1, 0, 3]
+        # 2- [ 1, 1, 0]
+
+        #  Grouped by rows (ordered by columns)
+        #  [[(0,1)], [(0,-1),(2, 3)], [(0,1),(1,1)]]
+        #      0            1               2
+
+        grouped_row_vector = []
+        # iterate over the external list
+        for i in range(n):
+            #    iterate over the internal list
+            list_vector = []
+            for j in range(m):
+                if A[i][j] != 0:
+                    coordinates = (j, A[i][j])
+                    list_vector.append(coordinates)
+            grouped_row_vector.append(list_vector)
+        print(grouped_row_vector)
+
+        # get the non zero values in a grouped column vector format for matrix B
+        #       0   1   2
+        # 0 - [ 7,  0, -3]
+        # 1 - [-1,  2,  3]
+        # 2 - [ 0,  0,  1]
+
+        #  Grouped by columns (ordered by rows)
+        #  [[(0,7),(1,-1)], [(1,2)] [(0,-3),(1,3),(2,1)]]
+        #         0            1              2
+
+        grouped_col_vector = []
+        # iterate over the internal list
+        for j in range(k):
+            list_vector = []
+            for i in range(m):
+                if B[i][j] != 0:
+                    coordinates = (i, B[i][j])
+                    list_vector.append(coordinates)
+            grouped_col_vector.append(list_vector)
+        print(grouped_col_vector)
+
+        result = []
+        for row in grouped_row_vector:
+            temp = []
+            for col in grouped_col_vector:
+                temp.append(self.multi(row, col))
+            result.append(temp)
+        return result
+
+    def multi(self, row, col):
+        ans = 0
+        i = 0
+        for j in range(len(col)):
+            while i < len(row) and row[i][0] < col[j][0]:
+                i += 1
+            if i < len(row) and row[i][0] == col[j][0]:
+                ans += row[i][1] * col[j][1]
+        return ans
+
 
 def main():
+    A = [
+        [1, 0, 0],
+        [-1, 0, 3],
+        [1, 1, 0]
+    ]
+
+    B = [
+        [7, 0, -3],
+        [-1, 2, 3],
+        [0, 0, 1]
+    ]
+
+    solution = Solution()
+    res = solution.solve(A, B)
+    print(res)
+
+
+main()
+
+
+def main():
+    '''
+
+    :return:
+    '''
+
     A = [
         [1, 0, 0],
         [-1, 0, 3]
@@ -126,9 +220,33 @@ def main():
         [0, 0, 0],
         [0, 0, 1]
     ]
+
+    '''
+    A = [
+          [ 1, 0, 0],
+          [-1, 0, 3],
+          [ 1, 1, 0]
+    ]
+
+    B = [
+          [ 7,  0, -3],
+          [-1,  2,  3],
+          [ 0,  0,  1]
+    ]
+    '''
     solution = Solution()
-    res = solution.multiply(A,B)
+    res = solution.multi(A,B)
     print(res)
 
 
 main()
+
+'''
+    Time complexity: 
+    
+    If A, B both dont have any 0 the the time is O(nmk). 
+    When they're both sparse, we can multiply two vectors in O(N) time and 
+    N here is the none-zero number. 
+    
+    Space complexity: O(N)
+'''

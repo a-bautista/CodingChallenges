@@ -14,32 +14,27 @@
 
 """
 
-class Solution:
-    # @param {integer[]} nums
-    # @return {integer[]}
-    def productExceptSelf(self, nums):
-        p = 1
-        n = len(nums)
-        output = []
-        for i in range(0,n):
-            output.append(p)
-            p = p * nums[i]
-        p = 1
-        # start in n-1, stop at -1 and reduce by -1
-        for i in range(n-1,-1,-1):
-            output[i] = output[i] * p
-            p = p * nums[i]
-        return output
+def productExceptSelf(nums):
+    ans = [1 for _ in nums]
+    left = 1
+    right = 1
 
+    for i in range(len(nums)):
+        ans[i] *= left
+        ans[-1 - i] *= right
+        left *= nums[i]
+        right *= nums[-1 - i]
+
+    return ans
 
 def main():
     nums = [2,3,4,5]
-    solution = Solution()
-    res = solution.productExceptSelf(nums)
+    #solution = Solution()
+    res = productExceptSelf(nums)
     print(res)
 
 main()
 
 """
-    Python solution (Accepted), O(n) time, O(1) space
+    Python solution (Accepted), O(N) time, O(1) space
 """

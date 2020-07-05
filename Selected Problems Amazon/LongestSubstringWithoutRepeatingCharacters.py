@@ -25,21 +25,39 @@ Example 3:
 
 '''
 
-
+# class Solution:
+#     def lengthOfLongestSubstring(self, s: str) -> int:
+#         """
+#         :type s: str
+#         :rtype: int
+#         """
+#         ans = 0
+#         sub = ''
+#         for char in s:
+#             if char not in sub:
+#                 sub += char
+#                 ans = max(ans, len(sub))
+#             else:
+#                 cut = sub.index(char)
+#                 sub = sub[cut + 1:] + char
+#         return ans
 
 class Solution:
-    def lengthOfLongestSubstring(self, s: str) -> int:
+    def lengthOfLongestSubstring(self, string):
         """
-        :type s: str
-        :rtype: int
+        Time:  O(n)
+        Space: O(k)
+        [k = length of the longest substring w/o repeating characters]
         """
-        ans = 0
-        sub = ''
-        for char in s:
-            if char not in sub:
-                sub += char
-                ans = max(ans, len(sub))
+        longest = 0
+        left, right = 0, 0
+        chars = set()
+        while left < len(string) and right < len(string):
+            if string[right] not in chars:
+                chars.add(string[right])
+                right += 1
+                longest = max(longest, right - left)
             else:
-                cut = sub.index(char)
-                sub = sub[cut + 1:] + char
-        return ans
+                chars.remove(string[left])
+                left += 1
+        return longest
