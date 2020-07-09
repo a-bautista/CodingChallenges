@@ -126,3 +126,9 @@ def main():
     print(res)
 
 main()
+
+'''
+    Time complexity: O(N) because of the number of functions
+    Space complexity: O(N) because of the stack
+
+'''
