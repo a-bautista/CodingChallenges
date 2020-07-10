@@ -1,0 +1,34 @@
+'''
+
+Given a string, determine if a permutation of the string could form a palindrome.
+
+'''
+from collections import Counter
+class Solution:
+    def canPermutePalindrome(self, s):
+        #dic = {}
+        dic = Counter(s)
+        #for item in s:
+        #    dic[item] = dic.get(item, 0) + 1
+        # return sum(v % 2 for v in dic.values()) < 2
+
+        count1 = 0
+        for val in dic.values():
+            if val % 2 == 1:
+                count1 += 1
+            if count1 > 1:
+                return False
+        return True
+
+def main():
+    input = 'aaba'
+    solution = Solution()
+    res = solution.canPermutePalindrome(input)
+    print(res)
+
+main()
+
+'''
+    Time complexity: O(N) because we traverse over the given string s once.
+    Space complexity: O(1)
+'''

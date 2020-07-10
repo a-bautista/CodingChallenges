@@ -15,7 +15,7 @@ Output: [5,6,7,1,2,3,4]
 
 # solution 1
 
-formula: 
+#formula:
 #(i+k) % n 
 
 class Solution:
@@ -36,8 +36,8 @@ class Solution:
 
 # solution 2
 
-class Solution:
-    def rotate(self, nums: List[int], k: int) -> None:
+class Solution2:
+    def rotate(self, nums, k):
         """
         Do not return anything, modify nums in-place instead.
         """
