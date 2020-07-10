@@ -20,6 +20,16 @@ class Solution:
             else:
                 d[n] = i
 
+
+def main():
+    nums = [2, 7, 11, 15]
+    target = 9
+    solution = Solution()
+    res = solution.twoSum(nums, target)
+    print(res)
+
+main()
+
 '''
     Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 
