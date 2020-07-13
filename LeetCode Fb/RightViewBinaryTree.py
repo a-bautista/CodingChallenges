@@ -8,30 +8,43 @@ class TreeNode:
         self.left, self.right = None, None
 
 
-def tree_right_view(root):
+def rightSideView(self, TreeNode):
+        
+    # data structure to store the result
     result = []
-    if root is None:
+      
+    # test case
+    if TreeNode is None:
         return result
 
+    # data structure to use for keeping the values
     queue = deque()
-    queue.append(root)
-
+    queue.append(TreeNode)
+        
+        
     while queue:
-        levelSize = len(queue)
-
-        for i in range(levelSize):
-            # get the current node to check if we have right or left children
-            currentNode = queue.popleft()
-
-            # if i is the last node, then save it to the results
-            if i == levelSize - 1:
-                result.append(currentNode)
-
-            if currentNode.left:
-                queue.append(currentNode.left)
-
-            if currentNode.right:
-                queue.append(currentNode.right)
+            
+        # calculate the size of the current level
+        size = len(queue)
+            
+        # iterate through each level
+        for i in range(0,size):
+                
+            # retreive the current node
+            node = queue.popleft()
+                
+            # if we get the last node from the next level
+            if i == size - 1:
+                result.append(node.val)
+                    
+            # append the left children 
+            if node.left:
+                queue.append(node.left)
+                
+            # append the right children
+            if node.right:
+                queue.append(node.right)
+        
     return result
 
 # Leetcode solution
