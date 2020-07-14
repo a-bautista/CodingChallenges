@@ -82,7 +82,7 @@ main()
 
 '''
     Time complexity: O(N)
-    Space complexity: o(N)
+    Space complexity: O(1)
     
     Quick select algorithm:
         You need to provide a pivot, so we generate a partitioned list where every element in the left side is less than
