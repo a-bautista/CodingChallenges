@@ -59,8 +59,9 @@ def main():
 main()
 
 '''
-  Time complexity: O(C) where C is the total length of all the words in the input list, added together. O(V+E) is the time for the adjacency lists.
-  Space complexity: We have O(V+E) where V is the number of unique letters and E is the number of relationships. The number of vertices is U (or the number
-  of unique letters). The number of edges in the worst case is min(U**2, N), so the space complexity is O(U+min(U**2, N)) but U is fixed to 26 letters, 
-  so this will be O(min(26**2,N)) = O(26) = O(1).
+  Time complexity: O(V+N). The original time is O(V+E) where V is the number of different characters and E is the total number of the rules in the
+  language. At most, each pair of words can give us one rule, we can conclude the upper bound for the rules is O(N) where N is the number of words in the
+  input, thus, time complexity is O(V+N). 
+  
+  Space complexity: We have O(V+N) .
 '''
