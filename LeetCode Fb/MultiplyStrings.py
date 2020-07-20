@@ -22,15 +22,22 @@ class Solution:
         :type num2: str
         :rtype: str
         """
+        # create a list to keep the results
         res = [0] * (len(num1) + len(num2))
+        # multiply the numbers by reversing them
         for i, v1 in enumerate(reversed(num1)):
             for j, v2 in enumerate(reversed(num2)):
+                # convert the numbers to an int value by subtracting the char values
                 int1 = ord(v1) - ord('0')
                 int2 = ord(v2) - ord('0')
-                res[i + j] += int1 * int2
-                res[i + j + 1] += res[i + j] // 10
-                res[i + j] %= 10
-        while len(res) > 1 and res[-1] == 0: res.pop()
+
+                res[i + j] += int1 * int2 # multiply the numbers
+                res[i + j + 1] += res[i + j] // 10 # bring out carry number to the left array
+                res[i + j] %= 10 # remove the carry out from the current array
+        # in case you have found a zero value at the end, remove it
+        while len(res) > 1 and res[-1] == 0:
+            res.pop()
+        # join all the values and then invert them to get the correct number
         return ''.join(str(v) for v in res)[::-1]
 
 def main():
@@ -39,6 +46,11 @@ def main():
     solution = Solution()
     res = solution.multiply(nums1, nums2)
     print(res)
+
+'''
+    Time complexity: O(M*N)
+    Space complexity: O(N)
+'''
 
 
 

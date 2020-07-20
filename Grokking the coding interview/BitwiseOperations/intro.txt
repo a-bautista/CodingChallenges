@@ -19,7 +19,7 @@ Arithmetic right shifts
     The least significant bit is lost and the most significant bit is copied.
 
     1011 >> 1 -> 1101
-    1011 >> 2 -> 1110
+    1011 >> 2 -> 0010 ->1110 ((the most significant bit will be copied)
 
 
 

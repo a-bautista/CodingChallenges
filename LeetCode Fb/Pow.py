@@ -33,5 +33,8 @@ def main():
     res = solution.pow(2,10)
     print(res)
 
-
 main()
+
+'''
+    Time complexity: O(Log N)
+'''
