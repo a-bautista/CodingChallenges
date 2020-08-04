@@ -69,8 +69,13 @@ class Solution(object):
 
 def main():
     solution = Solution()
-    #res = solution.nextPermutation([5,4,3,2,1])
-    res = solution.nextPermutation([1,7,9,9,8,3])
+    res = solution.nextPermutation([5,4,3,2,1])
+    #res = solution.nextPermutation([1,7,9,9,8,3])
     print(res)
 
 main()
+
+'''
+    Time complexity: O(N)
+    Space complexity: O(1)
+'''

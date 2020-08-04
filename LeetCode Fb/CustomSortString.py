@@ -40,3 +40,8 @@ class Solution:
             ans.append(c * count[c])
 
         return "".join(ans)
+
+'''
+    Time complexity: O(S.length+T.length)
+    Space complexity: O(T.length)
+'''

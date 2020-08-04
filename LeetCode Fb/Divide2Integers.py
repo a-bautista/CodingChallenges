@@ -65,5 +65,10 @@ def main():
     res = solution.divide(num1, num2)
     print(res)
 
-
 main()
+
+
+'''
+    Time complexity: O(N)
+    Space complexity: O(1)
+'''

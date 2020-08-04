@@ -16,9 +16,10 @@ Output:
 ]
 
 '''
+from collections import defaultdict
 class Solution:
 	def groupStrings(self, strings):
-		hashmap = {}
+		hashmap = defaultdict(list)
 		for s in strings:
 			key = ()
 			for i in range(len(s) - 1):
@@ -27,7 +28,7 @@ class Solution:
 				# add the key to the tuple
 				key += (circular_difference % 26,)
 			# add the key to the hashmap and add the string
-			hashmap[key] = hashmap.get(key, []) + [s]
+			hashmap[key].append(s)
 		return list(hashmap.values())
 
 

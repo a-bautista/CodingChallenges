@@ -20,6 +20,16 @@ class Solution:
                 right = mid - 1
         return nums[last] + k
 
+
+def main():
+    nums = [4,7,9,10]
+    k = 3
+    solution = Solution()
+    re = solution.missingElement(nums, k)
+    print(re)
+
+main()
+
 '''
     Time complexity: O(Log(N))
     Space complexity: O(1)

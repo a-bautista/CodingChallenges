@@ -63,21 +63,20 @@ class Solution:
         # constraint
         if ns < n_substring:
             return []
-
         # count the number of elements in the p string
         substring_count = Counter(substring)
-
-
         s_count = Counter()
 
         output = []
         # sliding window on the string s
         for i in range(ns):
+        #for i, letter in enumerate(s):
             # add one more letter on the right side of the window
             s_count[s[i]] += 1
+            #s_count[letter] += 1
             # remove one letter from the left side of the window
             if i >= n_substring:
-
+                #if s_count[i - n_substring] == 1:
                 if s_count[s[i - n_substring]] == 1:
                     # delete a letter from the left, so you can keep moving the window and you
                     # keep its size at len(substring) times
@@ -85,10 +84,11 @@ class Solution:
                 else:
                     # subtract 1 value from the window
                     s_count[s[i - n_substring]] -= 1
+                    #s_count[i - n_substring] -= 1
             # compare array in the sliding window with the reference array
             # add the starting index
             if substring_count == s_count:
-                output.append(i - n_substring + 1)
+                output.append(i - n_substring + 1) # total - n_substring+1
 
         return output
 

@@ -18,8 +18,8 @@
 
     Further explanation: 
         
-        The trick is in this line: there is a non-negative cooling interval n that means between two same tasks, there must be at least n intervals
-        that CPU are doing different tasks or just be idle and this means:
+        The trick is in this line: there is a non-negative cooling interval n that means between two same tasks,
+        there must be at least n intervals that CPU are doing different tasks or just be idle and this means:
         
         AAABBB, n=2
         
@@ -46,7 +46,8 @@
              1      2            1       2
         
     
-        This problem follows the greedy approach because we need to look for the most repeated task.
+        This problem follows the greedy approach because we need to look for the most repeated
+        task.
     
         We need to calculate the idle time: 
             
@@ -64,11 +65,9 @@
         
             ABCABCDEFG, n=2
             
-        A B C A B C D E F G, this doesn't follow the interval approach, so we need to use the max(len(tasks), intervals)
-        
-        
-        
-    
+        A B C A B C D E F G, this doesn't follow the interval approach, so we need to use the
+        max(len(tasks), intervals)
+
 """
 from collections import Counter
 

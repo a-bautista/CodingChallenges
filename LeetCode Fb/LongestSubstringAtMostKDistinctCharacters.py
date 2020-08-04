@@ -17,7 +17,6 @@
 
 from collections import defaultdict
 
-
 class Solution:
     def lengthOfLongestSubstringTwoDistinct(self, s: 'str', k: int) -> int:
         n = len(s)
@@ -30,7 +29,7 @@ class Solution:
         left, right = 0, 0
         # hashmap character -> its rightmost position
         # in the sliding window
-        hashmap = defaultdict()
+        hashmap = dict()
 
         max_len = 1
 
@@ -48,7 +47,6 @@ class Solution:
                 left = del_idx + 1
 
             max_len = max(max_len, right - left)
-
         return max_len
 
 
@@ -63,14 +61,16 @@ main()
 
 """
     For the best case when input string contains not more than k distinct characters the answer is yes. 
-    It's the only one pass along the string with N characters and the time complexity is O(N)\mathcal{O}(N)O(N).
+    It's the only one pass along the string with N characters and the time complexity is O(N).
 
-For the worst case when the input string contains n distinct characters, the answer is no. In that case at each step one uses O(k)\mathcal{O}(k)O(k) time to find a minimum value in the hashmap with k elements and so the overall time complexity is O(Nk)\mathcal{O}(N k)O(Nk).
+    For the worst case when the input string contains n distinct characters, the answer is no. 
+    In that case at each step one uses O(k) time to find a minimum value in the hashmap with 
+    k elements and so the overall time complexity is O(Nk).
 
     Time complexity : O(N)\mathcal{O}(N)O(N) in the best case of k distinct characters in the string and 
     O(Nk)\mathcal{O}(N k)O(Nk) in the worst case of N distinct characters in the string.
 
-    Space complexity : O(k)\mathcal{O}(k)O(k) since additional space is used only for a hashmap with 
+    Space complexity : O(k) since additional space is used only for a hashmap with 
     at most k + 1 elements. 
 
 """

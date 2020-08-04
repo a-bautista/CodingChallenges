@@ -48,21 +48,33 @@ class Solution:
         """
         ans = 0
         sub = ''
-        
+        if len(s)==0:
+            return 0
+
         for char in s:
             # start adding each different char to the window
             if char not in sub:
                 sub += char
-                # calculate the length of the window and determine if the window is greater than ans
+                # calculate the length of the window and determine if the window is greater
+                # than ans
                 ans = max(ans, len(sub))
             # if the char already exists in the window
             else:
                 # determine where is located this char in the window
                 cut = sub.index(char)
-                # cut the window from that char that you found and start a new window with this new chart
+                # cut the window from that char that you found and start a new window with this new char
                 sub = sub[cut + 1:] + char
         return ans
-        
+
+def main():
+    s = 'abcabcbb'
+    solution = Solution()
+    res = solution.lengthOfLongestSubstring(s)
+    print(res)
+
+
+main()
+
 '''
     Time complexity: O(N)
     Space complexity: O(k)

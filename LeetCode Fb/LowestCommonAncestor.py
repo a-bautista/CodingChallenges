@@ -6,7 +6,6 @@ class TreeNode:
         self.left, self.right = None, None
         self.lca = None
 
-
 class Solution:
 
     def __init__(self):
@@ -89,7 +88,7 @@ main()
     1. Start traversing the tree from the root node.
     2. If the current node is either p or q, then mark the variable mid as True and continue to 
         search for the other node in the left and right branches. 
-    3. If either of the left or the right branch returns True then it means one of the two nodes was found.
+    3. If either the left or the right branch returns True then it means one of the two nodes was found.
     4. If at any point in the traversal, any two of the three flags left, right or mid becomes True, this means
         we have found the lowest common ancestor for the nodes p and q. 
         

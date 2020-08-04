@@ -21,7 +21,7 @@ class TreeNode:
         self.val   = key
 
 
-class Solution:
+class Solution2:
     def traverse_preorder(self,root, level, hash_map):
 
         if root is None:  # end recursion
@@ -50,6 +50,33 @@ class Solution:
 
         return sorted(hash_map)
 
+from collections import deque
+class Solution:
+    def solve(self, root):
+        if root is None:
+                    return []
+
+        columnTable = defaultdict(list)
+        min_column = max_column = 0
+        queue = deque([(root, 0)])
+
+        while queue:
+            node, column = queue.popleft()
+
+            if node is not None:
+                columnTable[column].append(node.val)
+                min_column = min(min_column, column)
+                max_column = max(max_column, column)
+
+                queue.append((node.left, column - 1))
+                queue.append((node.right, column + 1))
+
+        return [columnTable[x] for x in range(min_column, max_column + 1)]
+
+'''
+    Time complexity: O(N)
+    Space complexity: O(N)
+'''
 
 if __name__ == '__main__':
     main()

@@ -27,6 +27,6 @@ class Solution:
 
 
 """
-    Time complexity: O(n*log(n)) because it is binary search
+    Time complexity: O(log(n)) because it is binary search
     Space complexity: O(1)
 """

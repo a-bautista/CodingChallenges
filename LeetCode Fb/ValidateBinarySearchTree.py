@@ -32,11 +32,9 @@
     Req:
 
         I am printing in pre-order to get the values as described.``
-        I can do a comparison of each node in a pre-ordering approach to verify if the tree is correct or not, so I can have like a list
-        of True values and if there's one value with False then the tree is not correct.
+        I can do a comparison of each node in a pre-ordering approach to verify if the tree is correct or not,
+        so I can have like a list of True values and if there's one value with False then the tree is not correct.
         Binary search? O(log(n)) as the average case
-
-
 
         def validate(tree, l):
 
@@ -52,7 +50,6 @@
                         l.append('False')
                 validate(tree.left)
                 validate(tree.right)
-
 
 '''
 
@@ -95,3 +92,32 @@ def validate(tree,l):
 
         validate(tree.left,l)
         validate(tree.right,l)
+
+
+class Solution:
+    def isValidBST(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        stack, inorder = [], float('-inf')
+
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            # If next element in inorder traversal
+            # is smaller than the previous one
+            # that's not BST.
+            if root.val <= inorder:
+                return False
+            inorder = root.val
+            root = root.right
+
+        return True
+
+'''
+    Time complexity: O(N)
+    Space complexity: O(N)
+'''

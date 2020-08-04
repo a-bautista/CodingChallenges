@@ -12,21 +12,24 @@
      Explanation: Because [23, 2, 6, 4, 7] is an continuous subarray of size 5 and sums up to 42.
 """
 
-
+from collections import defaultdict
 def checkSubarraySum(nums, k):
     cache = {}
+    #cache2 = defaultdict(list)
     cur = 0
     for i, x in enumerate(nums):
         if cur not in cache:
             cache[cur] = i
+            #cache2[cur].append(i)
         cur = (cur + x) % k if k != 0 else cur + x
+        # if cur in cache means if cur is an index contained in cache
         if cur in cache and i > cache[cur]: return True
     return False
 
 def main():
 
     nums = [23, 2, 6, 4, 7]
-    k = 42
+    k = 11
     res = checkSubarraySum(nums, k)
     print(res)
 
