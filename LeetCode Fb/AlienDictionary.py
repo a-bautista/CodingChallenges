@@ -1,6 +1,5 @@
 from collections import deque
 
-
 def find_order(words):
   if len(words) == 0:
     return ""

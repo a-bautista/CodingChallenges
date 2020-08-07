@@ -72,12 +72,18 @@ class Solution(object):
 
 
 def main():
+    # accounts = [
+    #             ["John", "johnsmith@mail.com", "john_newyork@mail.com"],
+    #             ["John", "johnsmith@mail.com", "john00@mail.com"],
+    #             ["John", "johnnybravo@mail.com"],
+    #             ["Mary", "mary@mail.com"]
+    #             ]
     accounts = [
-                ["John", "johnsmith@mail.com", "john_newyork@mail.com"],
-                ["John", "johnsmith@mail.com", "john00@mail.com"],
-                ["John", "johnnybravo@mail.com"],
-                ["Mary", "mary@mail.com"]
-                ]
+        ["John", "john00@mail.com"],
+        ["John", "john00@mail.com", "johnbravo@mail.com"],
+        ["Mary", "mary@mail.com", "mary@mail.com"]
+    ]
+
     solution = Solution()
     res = solution.accountsMerge(accounts)
     print(res)
