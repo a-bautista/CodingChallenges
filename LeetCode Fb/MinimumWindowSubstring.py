@@ -43,12 +43,14 @@ def find_substring(str1, pattern):
   min_length = len(str1) + 1
   char_frequency = {}
 
+  # count the frequency of each char in the pattern to find
   for chr in pattern:
     if chr not in char_frequency:
       char_frequency[chr] = 0
     char_frequency[chr] += 1
 
-  # try to extend the range [window_start, window_end]
+  # try to extend the range [window_start, window_end] from the string
+  # Just make the window bigger to contain all the chars from the pattern
   for window_end in range(len(str1)):
     right_char = str1[window_end]
     if right_char in char_frequency:
@@ -56,19 +58,25 @@ def find_substring(str1, pattern):
       if char_frequency[right_char] >= 0:  # Count every matching of a character
         matched += 1
 
-    # Shrink the window if we can, finish as soon as we remove a matched character
+    # Shrink the window if we can to match the pattern in the string. Min lenght captures the index of the ending pattern of the string
+    # whereas window_start captures the index where the pattern begins. Once the pattern has been captured, remove a matched character
+    # to continue moving into the rest of characters of the string.
     while matched == len(pattern):
       if min_length > window_end - window_start + 1:
         min_length = window_end - window_start + 1
         substr_start = window_start
 
       left_char = str1[window_start]
+      # move onto the next char from the string
       window_start += 1
       if left_char in char_frequency:
         # Note that we could have redundant matching characters, therefore we'll decrement the
-        # matched count only when a useful occurrence of a matched character is going out of the window
+        # matched count only when a useful occurrence of a matched character is going out of the window, matched-=1 is there to stop coutning the match
         if char_frequency[left_char] == 0:
+          # decrease the matched to go out from the loop
           matched -= 1
+        # Indicate in which letter from the pattern you stopped when you found it in the string,
+        # so next time you find this letter then you know you have found the pattern again
         char_frequency[left_char] += 1
 
   if min_length > len(str1):
