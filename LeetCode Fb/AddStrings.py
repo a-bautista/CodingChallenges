@@ -18,6 +18,7 @@ class Solution:
         carry = 0
         p1 = len(num1) - 1
         p2 = len(num2) - 1
+        # I take each number one by one and convert it to an int with ord (we only take from 0 - 9)
         while p1 >= 0 or p2 >= 0:
             x1 = ord(num1[p1]) - ord('0') if p1 >= 0 else 0
             x2 = ord(num2[p2]) - ord('0') if p2 >= 0 else 0
@@ -32,11 +33,19 @@ class Solution:
 
         return ''.join(str(x) for x in res[::-1])
 
+
+def main():
+    solution = Solution()
+    res = solution.addStrings("14","19")
+    print(res)
+
+
+main()
+
 '''
 
 
     Time Complexity: O(max(N1,N2)) where N1​ and N2​ are length of nums1 and nums2. Here we do max⁡(N1,N2)\max(N_1, N_2)max(N1​,N2​) iterations at most.
-
     Space Complexity: O(max(N1,N2)) because the length of the new string is at most max⁡(N1,N2)+1\max(N_1, N_2) + 1max(N1​,N2​)+1.
 
 '''

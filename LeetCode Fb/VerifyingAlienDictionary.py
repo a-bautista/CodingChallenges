@@ -15,16 +15,19 @@ class Solution(object):
         """
         dic = {}
         new_words = []
-        # create the dictionary with the letter and order numbering {'h':0, 'e':1}
+        # create the dictionary with the letter and its appropriate order {'h': 0, 'l': 1, 'a': 2, 'b': 3, 'c': 4, ... }
         # O(N) because I depend on the number of elements in order
         for i, ch in enumerate(order):
             dic[ch] = i
 
-        # for each word in the words list, get the number of each letter in the dictionary
+        # for each word in the words list, get numbering of each letter based on the order of the dic
+        # hello -> [0,8,1,1,19]
+
         # O(k) where k is each letter
         for w in words:
             new = []
             for c in w:
+                # get the number that corresponds to each letter based on the initial dictionary
                 new.append(dic[c])
             new_words.append(new)
 

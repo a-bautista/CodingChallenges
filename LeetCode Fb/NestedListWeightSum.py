@@ -23,15 +23,47 @@ class Solution(object):
         :type nestedList: List[NestedInteger]
         :rtype: int
         """
-        def visit(nestedList, depth):
-            res = 0
+        sum = 0
+        def visit(nestedList, depth=1):
+            nonlocal sum
             for item in nestedList:
                 if item.isInteger():
-                    res += item.getInteger()*depth
+                    sum += item.getInteger()*depth
                 else:
-                    res += visit(item.getList(), depth+1)
-            return res
-        return visit(nestedList, 1)
+                    visit(item.getList(), depth+1)
+        visit(nestedList)
+        return sum
+
+    '''
+    input = [1,[4,[6]]]
+             ^
+    first iteration, 1 is an integer and depth is 1, so 1*1 = 1
+    input = [1,[4,[6]]]
+                ^
+    second iteration, we have a list, so it's not an integer then go back again to the function 
+    sum = 1 
+    depth = 2
+    
+    so 2*4 = 8 and add this 8 to the previous sum which was 9
+    third iteration, we have another list, so it's not an integer then go back to the function
+    sum = 9
+    depth = 3
+    
+    so 3*6 = 18 and 18 + 9 = 27 
+    
+    
+    
+    '''
+
+
+def main():
+    solution = Solution()
+    l1 = [[1,1],2,[1,1]]
+    res = solution.depthSum(l1)
+    print(res)
+
+main()
+
 
 '''
     Time complexity: O(N)

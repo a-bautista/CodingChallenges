@@ -24,6 +24,7 @@ class Solution:
         """
         # create a list to keep the results
         res = [0] * (len(num1) + len(num2))
+
         # multiply the numbers by reversing them
         for i, v1 in enumerate(reversed(num1)):
             for j, v2 in enumerate(reversed(num2)):
@@ -32,11 +33,13 @@ class Solution:
                 int2 = ord(v2) - ord('0')
 
                 res[i + j] += int1 * int2 # multiply the numbers
-                res[i + j + 1] += res[i + j] // 10 # bring out carry number to the left array
-                res[i + j] %= 10 # remove the carry out from the current array
+                res[i + j + 1] += res[i + j] // 10 # bring out carry number and put it on the right
+                res[i + j] %= 10 # in the current position, store the number without the carry
+
         # in case you have found a zero value at the end, remove it
         while len(res) > 1 and res[-1] == 0:
             res.pop()
+
         # join all the values and then invert them to get the correct number
         return ''.join(str(v) for v in res)[::-1]
 

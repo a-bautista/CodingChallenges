@@ -39,8 +39,13 @@ class Solution(object):
 
 
 def addTwoNumbers(self, l1, l2):
-    dummy = cur = ListNode(0)
+    # create the dummy head which will point to the result
+    dummy = cur_res = ListNode(0)
+
     carry = 0
+    # while we have values to point in the lists, sum the values of l1.val and l2.val and add them to carry.
+    # go onto the next node for each list
+
     while l1 or l2 or carry:
         if l1:
             carry += l1.val
@@ -48,7 +53,16 @@ def addTwoNumbers(self, l1, l2):
         if l2:
             carry += l2.val
             l2 = l2.next
-        cur.next = ListNode(carry%10)
-        cur = cur.next
+        # carry%10 contains the result of the sum without the carry
+        cur_res.next = ListNode(carry%10)
+        # go onto the next node in the list
+        cur_res = cur_res.next
+        # carry // = 10 contains the carry value that needs to be added next
         carry //= 10
     return dummy.next
+
+
+'''
+    Time complexity: O(max(M,N))
+    Space complexity: O(max(M,N))
+'''
