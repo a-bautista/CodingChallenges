@@ -94,6 +94,7 @@ def validate(tree,l):
         validate(tree.right,l)
 
 
+# Current solution
 class Solution:
     def isValidBST(self, root):
         """
