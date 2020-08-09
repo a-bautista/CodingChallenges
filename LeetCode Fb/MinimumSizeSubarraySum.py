@@ -28,24 +28,39 @@ class SolutionON:
 class SolutionONLogN:
     def minSubArrayLen(self, target, nums):
         result = len(nums) + 1
-        for idx, n in enumerate(nums[1:], 1):
-            nums[idx] = nums[idx - 1] + n
+        # Generate a cumulative sum from index 1 to the end
+        for idx, val in enumerate(nums[1:], 1):
+            nums[idx] = nums[idx - 1] + val
         left = 0
-        for right, n in enumerate(nums):
-            if n >= target:
-                left = self.find_left(left, right, nums, target, n)
+        # start doing a binary search to find the minimum values that are needed to get the target
+        for right, val in enumerate(nums):
+            if val >= target:
+                # find the left pointer that subtracted with the right pointer will give the minimun range values
+                left = self.find_left(left, right, nums, target, val)
+                # right-left + 1 indicates the minimum range values that are needed to get the target
                 result = min(result, right - left + 1)
         return result if result <= len(nums) else 0
 
-    def find_left(self, left, right, nums, target, n):
+    def find_left(self, left, right, nums, target, val):
         while left < right:
             mid = (left + right) // 2
-            if n - nums[mid] >= target:
+            #mid = left +(right - left) // 2
+            # the value is not at the left because val - nums[mid] >= target indicates our value is greater than the target
+            if val - nums[mid] >= target:
                 left = mid + 1
             else:
                 right = mid
         return left
 
+
+def main():
+    s = 7
+    nums = [2, 3, 1, 2, 4, 3]
+    solution = SolutionONLogN()
+    res = solution.minSubArrayLen(s,nums)
+    print(res)
+
+main()
 '''
     Time complexity: O(Log(N))
     

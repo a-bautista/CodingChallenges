@@ -27,24 +27,32 @@ def insert1(intervals, newInterval):
 
 class Solution:
     def insert(self, intervals, newInterval):
+
+        # edge cases
+        if not newInterval:
+            return intervals
+        if not intervals:
+            return []
+
+        # get the new values of the interval
         new_start, new_end = newInterval
         idx, n = 0, len(intervals)
         output = []
 
-        # add all intervals starting before newInterval
+        # In case the new interval's first value is greater than the first value of intervals
+        #  then add the first values from intervals to the result because we will merge them due to overlap
         while idx < n and new_start > intervals[idx][0]:
             output.append(intervals[idx])
             idx += 1
 
-        # add newInterval
-        # if there is no overlap, just add the interval
+        # add the newInterval values to the result if there is no overlap
         if not output or output[-1][1] < new_start:
             output.append(newInterval)
-        # if there is an overlap, merge with the last interval
+        # if there is an overlap in output and intervals, merge the last value of output with the new interval last value
         else:
             output[-1][1] = max(output[-1][1], new_end)
 
-        # add next intervals, merge with newInterval if needed
+        # add the next intervals to the results and verify if there's an overlap with the output results
         while idx < n:
             interval = intervals[idx]
             start, end = interval
@@ -58,8 +66,10 @@ class Solution:
         return output
 
 def main():
-    intervals = [[1,2],[8,9]]
-    interval = [0,3]
+    intervals = [[1,3],[6,9]]
+    interval = [2,5]
+    #intervals = [[1,2],[8,9]]
+    #interval = [0,3]
     solution = Solution()
     res = solution.insert(intervals,interval)
     print(res)
