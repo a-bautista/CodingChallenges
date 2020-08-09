@@ -16,8 +16,6 @@ def main():
 
 
 
-
-
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, x):
@@ -126,9 +124,11 @@ class TreeNode:
         # around so that there is nothing on the left side anymore.
 
         if left_tail:
-            #print(left_tail.val)
+            # at the very end of the tail_left.right, you will add the right children of the root
             left_tail.right = root.right
+            # the root will have the contents of the left_tail which also contains the previously added nodes from root.right
             root.right = root.left
+            # we don't need the contents of the root.left, so make it None
             root.left = None
 
         # We need to return the "rightmost" node after we are
@@ -190,7 +190,7 @@ main()
      
     Algorithm:
         1. Start traversing the tree from the left side. 
-        2. Reach the bottom of the left side tree (BFS).
+        2. Reach the bottom of the left side tree (DFS).
         3. If there's a right node on the very bottom, append it to the end of the left side (tail_left).
         4. Go back to verify if the previous nodes have children to the right. (Recursion)
             4.1. Append the left nodes to the tail_left (recursion). 
@@ -201,5 +201,8 @@ main()
             7.1. Append the left nodes to the tail_right.
             7.2. Append the right nodes to the tail_right. 
         8. Join the left_tail to the right_tail. 
-                
+   
+   Time complexity: O(N)
+   Space complexity: O(N)   
+             
 """

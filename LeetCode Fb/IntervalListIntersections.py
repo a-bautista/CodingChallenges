@@ -10,6 +10,8 @@ class Solution:
             # hi - the endpoint of the intersection
             lo = max(A[i][0], B[j][0])
             hi = min(A[i][1], B[j][1])
+
+            # append the values of the list only if the lo <= hi (if a value is contained)
             if lo <= hi:
                 ans.append([lo, hi])
 
