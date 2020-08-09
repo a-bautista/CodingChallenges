@@ -1,3 +1,7 @@
+'''
+    This is the same problem as FindMostFrequentElementAllIntervals problem.
+'''
+
 from collections import defaultdict
 
 
@@ -23,3 +27,4 @@ def find_common_number(nums):
 print(find_common_number([[1, 4], [3, 5], [4, 6]]))
 print(find_common_number([[0, 2], [3, 5]]))
 print(find_common_number([[1, 5], [3, 5]]))
+print(find_common_number([(1, 15), (5, 8), (9, 12), (13, 20), (21, 30)]))

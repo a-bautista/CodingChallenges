@@ -35,7 +35,6 @@ class Solution:
 
 
 # solution 2
-
 class Solution2:
     def rotate(self, nums, k):
         """

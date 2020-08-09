@@ -1,6 +1,24 @@
 
 """
+    Find the minimum rooms based on the following schedule:
     (1,10), (2, 7), (3, 19), (8, 12)
+
+       K1      K2
+    [(1,10), (2,7)]
+    Is K2[0] contained in K1? Yes, then create a new room.
+
+       K1      K2     K3
+    [(1,10), (2,7), (3,19)]
+    Is K3[0] contained in the ranges of K1 and K2? yes, then create a new room
+
+       K1      K2     K3       K4
+    [(1,10), (2,7), (3,19), (8,12)]
+    Is K4[0] contained in the ranges of K1,K2 and K3? Not for K2, so replace K2 by K4.
+
+       K1      K4     K3
+    [(1,10), (8,12), (3,19)]
+
+
     1. Sort elements by the first element in the array.
     2. Store the last element in a min heap because in this way we will make sure to keep always the lowest value at the top.
     3. Compare k[0][-1] with k[1][0]: (1, 10), (2, 7)
@@ -34,13 +52,25 @@ class Solution:
         # For all the remaining meeting rooms
         for i in intervals[1:]:
 
-            # If the room due to free up the earliest is free, assign that room to this meeting.
+            # If the first element from the heap is less than the current i[0] then replace the first room in the heap with this new value
             if free_rooms[0] <= i[0]:
                 heapq.heappop(free_rooms)
 
-            # If a new room is to be assigned, then also we add to the heap,
-            # If an old room is allocated, then also we have to add to the heap with updated end time.
+            # If k[0][-1] > k[1][0] is True, then add the k[1][1] value to the min heap because it means that there is no meeting room
             heapq.heappush(free_rooms, i[1])
 
         # The size of the heap tells us the minimum rooms required for all the meetings.
         return len(free_rooms)
+
+def main():
+    rooms = [(1,10), (2,7), (3,19), (8,12)]
+    solution = Solution()
+    res = solution.minMeetingRooms(rooms)
+    print(res)
+
+main()
+
+'''
+    Time complexity: O(N*log(N))
+    Space complexity: O(N)
+'''

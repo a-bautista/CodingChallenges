@@ -2,6 +2,11 @@
     Given a list of lists of integers, nums, return all elements of nums in diagonal order as shown in the below images.
 
     Input: nums = [[1,2,3],[4,5,6],[7,8,9]]
+
+        [1,2,3]
+        [4,5,6]
+        [7,8,9]
+
     Output: [1,4,2,7,5,3,8,6,9]
 
 
