@@ -127,7 +127,7 @@ class Solution:
         # 1- [-1, 0, 3]
         # 2- [ 1, 1, 0]
 
-        #  Grouped by rows (ordered by columns)
+        #  Get the non zero values in a grouped by rows vector (ordered by columns)
         #  [[(0,1)], [(0,-1),(2, 3)], [(0,1),(1,1)]]
         #      0            1               2
 
@@ -141,9 +141,9 @@ class Solution:
                     coordinates = (j, A[i][j])
                     list_vector.append(coordinates)
             grouped_row_vector.append(list_vector)
-        print(grouped_row_vector)
+        #print(grouped_row_vector)
 
-        # get the non zero values in a grouped column vector format for matrix B
+        # Get the non zero values in a grouped by column vector (ordered by rows)
         #       0   1   2
         # 0 - [ 7,  0, -3]
         # 1 - [-1,  2,  3]
@@ -162,7 +162,7 @@ class Solution:
                     coordinates = (i, B[i][j])
                     list_vector.append(coordinates)
             grouped_col_vector.append(list_vector)
-        print(grouped_col_vector)
+        #print(grouped_col_vector)
 
         result = []
         for row in grouped_row_vector:
@@ -182,6 +182,14 @@ class Solution:
                 ans += row[i][1] * col[j][1]
         return ans
 
+    # [[(0, 1)], [(0, -1), (2, 3)], [(0, 1), (1, 1)]]
+    # [[(0,7),(1,-1)], [(1,2)] [(0,-3),(1,3),(2,1)]]
+    # A(0,1) * B(0,7) is A[i]==B[j], yes then multiply A[i+1]*B[j+1] or 1*7
+    # A(0,1) * B(1,-1) is A[i]<B[j], yes then increase the value of j to move onto the next list
+    # A(0, 1) * B(1,2) is A[i]<B[j], yes, then increase the value of j to move onto the next list and return 0 this time
+    # because this is the end of the list
+    # A(0, 1) * B(0,-3) is A[i]==B[j], yes then multiply A[i+1]*B[j+1] or 1*-3
+
 
 def main():
     A = [
@@ -196,50 +204,46 @@ def main():
         [0, 0, 1]
     ]
 
-    solution = Solution()
-    res = solution.solve(A, B)
+    solution1 = Solution()
+    res = solution1.solve(A, B)
+
     print(res)
-
-
-main()
-
-
-def main():
     '''
 
-    :return:
-    '''
+        :return:
+        '''
 
-    A = [
+    C = [
         [1, 0, 0],
         [-1, 0, 3]
     ]
 
-    B = [
+    D = [
         [7, 0, 0],
         [0, 0, 0],
         [0, 0, 1]
     ]
 
     '''
-    A = [
+    C = [
           [ 1, 0, 0],
           [-1, 0, 3],
           [ 1, 1, 0]
     ]
 
-    B = [
+    D = [
           [ 7,  0, -3],
           [-1,  2,  3],
           [ 0,  0,  1]
     ]
     '''
-    solution = Solution()
-    res = solution.multi(A,B)
-    print(res)
+    solution2 = Solution()
+    res2 = solution2.multi(C, D)
+    print(res2)
 
 
 main()
+
 
 '''
     Time complexity: 

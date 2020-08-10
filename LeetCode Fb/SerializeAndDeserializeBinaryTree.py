@@ -1,7 +1,11 @@
 """
-    Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
+    Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored
+    in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same
+    or another computer environment.
 
-    Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.
+    Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your
+    serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized
+    to a string and this string can be deserialized to the original tree structure.
 
     Example:
 
@@ -14,13 +18,6 @@
         4   5
 
     as "[1,2,3,null,null,4,5]"
-
-
-    Time complexity : in both serialization and deserialization functions, we visit each node exactly once,
-    thus the time complexity is O(N), where NNN is the number of nodes, i.e. the size of tree.
-
-    Space complexity : in both serialization and deserialization functions, we keep the entire tree, either at the
-    beginning or at the end, therefore, the space complexity is O(N).
 
 """
 
@@ -41,15 +38,15 @@ class Codec:
         """
         return self.helper_rserialize(root,[])
 
-    def helper_rserialize(self, root, rserialized):
+    def helper_rserialize(self, root, rserialized_list):
         if root is None:
-            rserialized.append('None')
+            rserialized_list.append('None')
         else:
             # pre-order (root-left-right)
-            rserialized.append(str(root.val))
-            rserialized = self.helper_rserialize(root.left, rserialized)
-            rserialized = self.helper_rserialize(root.right, rserialized)
-        return rserialized
+            rserialized_list.append(str(root.val))
+            rserialized_list = self.helper_rserialize(root.left, rserialized_list)
+            rserialized_list = self.helper_rserialize(root.right, rserialized_list)
+        return rserialized_list
 
     def dserialize(self, rserialized_list):
 
@@ -60,6 +57,7 @@ class Codec:
     def helper_deserialize(self, node_list):
 
         if node_list[0] == 'None':
+            # disregard this Node because it's None, we don't need it
             node_list.pop(0)
             return None
 
@@ -97,6 +95,12 @@ main()
 
 
 """
+    Time complexity : in both serialization and deserialization functions, we visit each node exactly once,
+    thus the time complexity is O(N), where NNN is the number of nodes, i.e. the size of tree.
+
+    Space complexity : in both serialization and deserialization functions, we keep the entire tree, either at the
+    beginning or at the end, therefore, the space complexity is O(N).
+
     Time complexity: O(N)where n is the number of nodes
     Space complexity: O(N)
 """

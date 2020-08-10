@@ -1,5 +1,6 @@
 '''
-    Given an unsorted list of start and end time, find **any** number within all the ranges that occurs in maximum number of intervals.
+    Given an unsorted list of start and end time, find **any** number within all the ranges that occurs in maximum number
+    of intervals.
     input: [[1,4],[3,5],[4,6]]
     output: 4
     This is for non negative numbers.

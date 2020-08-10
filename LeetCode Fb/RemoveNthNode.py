@@ -15,15 +15,26 @@ class ListNode:
         self.next = next
 
 def removeNthFromEnd(self, head, n):
+    # Create a dummy LinkedList node
     dummy = ListNode(0)
+    # Point the dummy linked list to the head
     dummy.next = head
+    # Make two more pointers which will point to dummy (we are making the values to be the same as dummy)
     fast = slow = dummy
+
+    #Skip N nodes from the fast linkedlist
     for _ in range(n):
         fast = fast.next
+
+    # Start advancing 1 node until fast only contains 1 node
+    # This causes the slow pointer to stop in the Nth node to be removed
     while fast and fast.next:
         fast = fast.next
         slow = slow.next
+
+    # Skip the Nth node by disconnecting it. The slow.next will point to the next.next node (so you skip the Nth node)
     slow.next = slow.next.next
+    # dummy is a copy of slow, so dummy will be affected by the line from above
     return dummy.next
 
 

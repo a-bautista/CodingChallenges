@@ -21,10 +21,14 @@ class Solution:
 
         prev, curr = sentinel, head
         while curr:
+            # if I find the value, then make the previous node .next to be the current.next element, so you disconnect
+            # the target from the linked list
             if curr.val == val:
                 prev.next = curr.next
+            # move the previous node to be current
             else:
                 prev = curr
+            # move the current value to the next value in the linked list
             curr = curr.next
 
         return sentinel.next
