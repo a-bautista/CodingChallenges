@@ -79,19 +79,19 @@ def print_preorder(tree):
         print_preorder(tree.left)
         print_preorder(tree.right)
 
-def validate(tree,l):
-
-    if tree:
-        if tree.left or tree.right:
-            if tree.val < tree.left:  # you cannot compare because there will be null values
-                l.append('True')
-            elif tree.val > tree.right:
-                l.append('True')
-            else:
-                l.append('False')
-
-        validate(tree.left,l)
-        validate(tree.right,l)
+# def validate(tree,l):
+#
+#     if tree:
+#         if tree.left or tree.right:
+#             if tree.val < tree.left:  # you cannot compare because there will be null values
+#                 l.append('True')
+#             elif tree.val > tree.right:
+#                 l.append('True')
+#             else:
+#                 l.append('False')
+#
+#         validate(tree.left,l)
+#         validate(tree.right,l)
 
 
 # Current solution
@@ -104,18 +104,18 @@ class Solution:
         stack, inorder = [], float('-inf')
 
         while stack or root:
+            # Get the children of the node
             while root:
                 stack.append(root)
                 root = root.left
+
             root = stack.pop()
-            # If next element in inorder traversal
-            # is smaller than the previous one
-            # that's not BST.
+            # If next element in inorder traversal is smaller than the previous one then it's not BST
             if root.val <= inorder:
                 return False
             inorder = root.val
+            # Get the right children
             root = root.right
-
         return True
 
 '''
