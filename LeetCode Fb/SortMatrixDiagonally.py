@@ -33,6 +33,8 @@ class Solution:
         for diag in diags.values():
             diag.sort(reverse=True)
 
+        # that sort must be done in linear time
+
         # replace each reversed diagonal in the matrix
         for i, row in enumerate(matrix):
             for j, _ in enumerate(row):

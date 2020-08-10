@@ -35,6 +35,10 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
+        # edge case
+        if not prices or len(prices) is 1:
+            return 0
+
         t1_cost, t2_cost = float('inf'), float('inf')
         t1_profit, t2_profit = 0, 0
 
@@ -42,12 +46,21 @@ class Solution(object):
             # the maximum profit if only one transaction is allowed
             t1_cost = min(t1_cost, price)
             t1_profit = max(t1_profit, price - t1_cost)
+
             # reinvest the gained profit in the second transaction
             t2_cost = min(t2_cost, price - t1_profit)
             t2_profit = max(t2_profit, price - t2_cost)
 
         return t2_profit
 
+
+def main():
+    nums = [3,3,5,0,0,3,1,4]
+    solution = Solution()
+    res = solution.maxProfit(nums)
+    print(res)
+
+main()
 '''
     Time complexity: O(N)
     Space complexity: O(1)

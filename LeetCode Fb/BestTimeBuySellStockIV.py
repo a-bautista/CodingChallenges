@@ -24,59 +24,50 @@ Explanation: Buy on day 2 (price = 2) and sell on day 3 (price = 6), profit = 6-
 
 class Solution:
     def maxProfit(self, k: int, prices) -> int:
-        n = len(prices)
 
         # solve special cases
         if not prices or k == 0:
             return 0
 
-        # find all consecutively increasing subsequence
-        transactions = []
-        start = 0
-        end = 0
-        for i in range(1, n):
-            if prices[i] >= prices[i-1]:
-                end = i
-            else:
-                if end > start:
-                    transactions.append([start, end])
-                start = i
-        if end > start:
-            transactions.append([start, end])
+        n = len(prices)
 
-        while len(transactions) > k:
-            # check delete loss
-            delete_index = 0
-            min_delete_loss = math.inf
-            for i in range(len(transactions)):
-                t = transactions[i]
-                profit_loss = prices[t[1]] - prices[t[0]]
-                if profit_loss < min_delete_loss:
-                    min_delete_loss = profit_loss
-                    delete_index = i
+        # first case: we can trade as much as we can because k>=n//2
+        if k >= n // 2:  # problem 122. Best Time to Buy and Sell Stock II
+            max_profit = 0
+            for i in range(n - 1):
+                max_profit += max(prices[i + 1] - prices[i], 0)
+            return max_profit
 
-            # check merge loss
-            merge_index = 0
-            min_merge_loss = math.inf
-            for i in range(1, len(transactions)):
-                t1 = transactions[i-1]
-                t2 = transactions[i]
-                profit_loss = prices[t1[1]] - prices[t2[0]]
-                if profit_loss < min_merge_loss:
-                    min_merge_loss = profit_loss
-                    merge_index = i
+        # second case: we cannot trade that much so create the following structure for storing the results
+        # [[0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0], [0, 0, 0]]
+        dp = [[0 for _ in range(k + 1)] for _ in range(n)]
+        # for number of transactions starting from 1 to k+1, i.e., k=2 then k1 = 1 and stop in k=3
+        for k1 in range(1, k + 1):
+            # take the first price in the transactions
+            local_max = -prices[0]
 
-            # delete or merge
-            if min_delete_loss <= min_merge_loss:
-                transactions.pop(delete_index)
-            else:
-                transactions[merge_index - 1][1] = transactions[merge_index][1]
-                transactions.pop(merge_index)
+            for i in range(1, n):
+                # dp[i - 1][k1] means the value in the previous array,
+                # prices[i] + local_max takes the current price[i] and add it to the local_max
+                # assign to dp[i][k1] the current max val between the previous and the current price + local max
+                dp[i][k1] = max(dp[i - 1][k1], prices[i] + local_max)
+                # local max is used to get the result which will be stored at the very end of the list structure
+                local_max = max(local_max, dp[i - 1][k1 - 1] - prices[i])
 
-        return sum(prices[j]-prices[i] for i, j in transactions)
+        # return the last element from the last list because we store the result on it
+        return dp[n - 1][k]
 
+
+def main():
+    nums =  [3, 2, 6, 5, 0, 3]
+    k = 2
+    solution = Solution()
+    res = solution.maxProfit(k, nums)
+    print(res)
+
+
+main()
 '''
-    Time complexity: O(n(n−k)) if 2k≤n2k \le n2k≤n , O(n)\mathcal{O}(n)O(n) if 2k>n2k > n2k>n, 
-    where nnn is the length of the price sequence. The maximum size of transactions is O(n)\mathcal{O}(n)O(n), and we need O(n−k)\mathcal{O}(n-k)O(n−k) iterations.
-    Space Complexity: O(n)\mathcal{O}(n)O(n), since we need a list to store 
+    Time complexity: O(kn).
+    Space Complexity: O(kn) 
 '''
