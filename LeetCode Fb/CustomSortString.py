@@ -27,19 +27,30 @@ class Solution:
         count = Counter(T)
         ans = []
 
-        # Write all characters that occur in S, in the order of S.
+        # Write all characters that occur in S into the list, then set that character that occurred to 0
+        # {a:0,b:0,c:0,d:0} after the update to 0
         for c in S:
             ans.append(c * count[c])
             # Set count[c] = 0 to denote that we do not need
             # to write 'c' to our answer anymore.
             count[c] = 0
 
-        # Write all remaining characters that don't occur in S.
+        # Write all remaining characters that don't occur in S into the list
         # That information is specified by 'count'.
         for c in count:
             ans.append(c * count[c])
 
         return "".join(ans)
+
+def main():
+    S = 'zcba'
+    T = 'abcdz'
+    solution = Solution()
+    res = solution.customSortString(S,T)
+    print(res)
+
+main()
+
 
 '''
     Time complexity: O(S.length+T.length)

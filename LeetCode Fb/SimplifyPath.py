@@ -46,7 +46,7 @@ class Solution:
 
 
 def main():
-    s = '/home/'
+    s = '/home/..'
     solution = Solution()
     res = solution.simplifyPath(s)
     print(res)

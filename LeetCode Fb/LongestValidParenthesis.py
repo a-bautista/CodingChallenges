@@ -35,6 +35,7 @@
 def longestValidParentheses(s):
     # we use len(s) + 1 to indicate that in the last position we
     # will insert the result of the longest valid substring parenthesis
+    # dp = [0,0,0,0,0,0] will hold the indexes where we found the valid parenthesis
 
     dp, stack = [0]*(len(s) + 1), []
 
