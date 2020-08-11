@@ -149,8 +149,6 @@ class Solution:
         return sorted_list_head.next
 
 
-
-
 # class SolutionMergeListsDefinitive:
 #     def mergeKLists(self, lists):
 #         """
