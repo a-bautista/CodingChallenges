@@ -111,7 +111,6 @@ def mergeKLists(lists):
 
     while len(heap) > 0:
         x, n = heapq.heappop(heap)
-
         if out is None:
             out = ListNode(x)
             head = out
@@ -121,7 +120,6 @@ def mergeKLists(lists):
 
         if n.next is not None:
             heapq.heappush(heap, (n.next.val, n.next))
-
     return head
 
 
