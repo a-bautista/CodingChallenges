@@ -113,6 +113,7 @@ class Solution:
             # If next element in inorder traversal is smaller than the previous one then it's not BST
             if root.val <= inorder:
                 return False
+
             inorder = root.val
             # Get the right children
             root = root.right

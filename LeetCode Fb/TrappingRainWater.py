@@ -20,29 +20,47 @@
             Subtract 1 from right so you can move to the left
 
 
+
 """
 
 class Solution:
-    def trap(self, height: List[int]) -> int:
+    def trap(self, height):
         """
         :type height: List[int]
         :rtype: int
         """
         areas = 0
         max_l = max_r = 0
-        l = 0
-        r = len(height)-1
-        while l < r:
-            if height[l] < height[r]:
-                if height[l] > max_l:
-                    max_l = height[l]
+        left = 0
+        right = len(height)-1
+        while left < right:
+            #If left pointer is smaller than right pointer, then the trapped water depends on the
+            # left pointer
+            if height[left] < height[right]:
+                # if the current left pointer is greater than the max left pointer
+                if height[left] > max_l:
+                    # update left max
+                    max_l = height[left]
                 else:
-                    areas += max_l - height[l]
-                l +=1
+                    # start capturing water only when we have the left max available
+                    # water goes from left max bar to the lower left bar
+                    areas += max_l - height[left]
+                # sum 1, move to the right
+                left +=1
+            # the left pointer is greater than the right pointer, then the trapped water depends
+            # on the right pointer
             else:
-                if height[r] > max_r:
-                    max_r = height[r]
+                if height[right] > max_r:
+                    max_r = height[right]
                 else:
-                    areas += max_r - height[r]
-                r -=1
+                    # start capturing water only when we have the right max available
+                    # water goes right max bar to the lower right bar
+                    areas += max_r - height[right]
+                # subtract 1, move to the left
+                right -=1
         return areas
+
+'''
+    Time complexity: O(N)
+    Space complexity: O(1)
+'''
