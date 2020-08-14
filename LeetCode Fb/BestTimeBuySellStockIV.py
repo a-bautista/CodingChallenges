@@ -40,6 +40,16 @@ class Solution:
                 max_profit += max(prices[i + 1] - prices[i], 0)
             return max_profit
 
+        # Actually we only need to compare pre profit we made and profit we got in the for loop
+        profits = [0] * len(prices)
+        for j in range(k):
+
+            preprofit = 0
+            for i in range(1, len(prices)):
+                profit = prices[i] - prices[i - 1]
+                preprofit = max(preprofit + profit, profits[i])
+                profits[i] = max(profits[i - 1], preprofit)
+
         globalMax = [[0] * n for _ in range(k + 1)]
         for i in range(1, k + 1):
             # The max profit with i transations and selling stock on day j.
