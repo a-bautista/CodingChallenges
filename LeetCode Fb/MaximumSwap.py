@@ -15,13 +15,15 @@ class Solution:
         A = list(str(num))
         # display the index of each element but notice that this is a set
         # so, you will only see the indexes of the different numbers
+        # {2:0,0:2,3:3} -> we have the indexes of the numbers
         last = {int(x): i for i, x in enumerate(A)}
         # enumerate each element of the list 0:1, 1:7, 2:7, 3:7
         for i, x in enumerate(A):
             # start in 9, stop at int(x) and subtract 1, we use 9 because we have 9 values from 1-9
             for d in range(9, int(x), -1):
                 # if there's an element 'd' in the set that is greater than the current index i then replace it
-                # by doing a swap. The get(d,0) indicates to get the numeric value. 
+                # by doing a swap. The get(d,0) indicates to get the numeric value.
+                # for instance, {2:0,0:2,3:3} when iterate from 9 to 3, there's this 3 which is greater than 2, so perform the swap
                 if last.get(d,0) > i:
                     # do the swap
                     A[i], A[last[d]] = A[last[d]], A[i]

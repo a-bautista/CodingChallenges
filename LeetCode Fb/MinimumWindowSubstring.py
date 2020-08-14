@@ -67,7 +67,7 @@ def find_substring(str1, pattern):
         substr_start = window_start
 
       left_char = str1[window_start]
-      # move onto the next char from the string
+      # move onto the next char from the string, and in case we have redundant chars then delete them, so we can get out of the loop
       window_start += 1
       if left_char in char_frequency:
         # Note that we could have redundant matching characters, therefore we'll decrement the

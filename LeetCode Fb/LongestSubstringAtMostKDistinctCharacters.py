@@ -34,11 +34,14 @@ class Solution:
         max_len = 1
 
         while right < n:
-            # add new characters and move right pointer
+            # add new characters and move right pointer to keep adding letters
             hashmap[s[right]] = right
             right += 1
 
             # slidewindow contains k + 1 characters, delete the character with the lowest value
+            # {c:2,e:2:b:1} this is good
+            # {c:2,e:2:b:1,a:1} I need to get rid of the most left most letters, in this case, c:2
+            # {e:2:b:1,a:1} keep adding letters now
             if len(hashmap) > k :
                 # delete the leftmost character
                 del_idx = min(hashmap.values())
@@ -46,6 +49,7 @@ class Solution:
                 # move left pointer of the slidewindow
                 left = del_idx + 1
 
+            # max len keeps the values of the substring
             max_len = max(max_len, right - left)
         return max_len
 

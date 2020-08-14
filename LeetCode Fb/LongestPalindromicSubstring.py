@@ -13,7 +13,8 @@ class Solution:
         return res
 
     # get the longest palindrome, l, r are the middle indexes
-    # from inner to outer
+    # from inner to outer because I want to find the middle letter
+    # that will have at the left and right the same letters, so it is palindrome
     def helper(self, s, l, r):
         while l >= 0 and r < len(s) and s[l] == s[r]:
             l -= 1

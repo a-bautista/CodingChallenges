@@ -1,9 +1,16 @@
+'''
+
+the formula to calculate the missing element is = (nums[-1]-nums[0]+1)
+
+'''
+
 from typing import List
 
 class Solution:
     def missingElement(self, nums: List[int], k: int) -> int:
         len_n = len(nums)
         missing = (nums[-1] - nums[0] + 1) - len_n
+        # if k is greater than missing then we can find the missing number with the formula from below
         if k > missing:
             return nums[-1] + k - missing
 

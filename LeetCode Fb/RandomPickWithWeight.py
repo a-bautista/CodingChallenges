@@ -41,7 +41,6 @@ class Solution:
 
     def pickIndex(self):
 
-
         left, right = 0, len(self.prefix_sums) - 1
         # calculate the target by multiplying the total * random, so this will indicate where the target is closer to the element in the array
         target = self.total * random()

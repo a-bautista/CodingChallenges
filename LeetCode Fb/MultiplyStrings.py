@@ -22,7 +22,7 @@ class Solution:
         :type num2: str
         :rtype: str
         """
-        # create a list to keep the results
+        # create a list to keep the results [0,0,0,0,0,0]
         res = [0] * (len(num1) + len(num2))
 
         # multiply the numbers by reversing them

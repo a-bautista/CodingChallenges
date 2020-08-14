@@ -23,12 +23,12 @@ class Solution:
         left, right = 0, 0
         # hashmap character -> its rightmost position
         # in the sliding window
-        hashmap = defaultdict()
+        hashmap = dict()
 
         max_len = 2
 
         while right < n:
-            # slidewindow contains less than 3 characters
+            # slidewindow contains less than 3 characters, you keep adding values
             if len(hashmap) < 3:
                 hashmap[s[right]] = right
                 right += 1

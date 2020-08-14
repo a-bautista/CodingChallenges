@@ -29,9 +29,13 @@ class SolutionONLogN:
     def minSubArrayLen(self, target, nums):
         result = len(nums) + 1
         # Generate a cumulative sum from index 1 to the end
+        # we use a cumulative sum because we want to find those values that are greater
+        # than the target, so I can do a binary search only on those values that are greater
+        # [2,5,6,8,12,15]
         for idx, val in enumerate(nums[1:], 1):
             nums[idx] = nums[idx - 1] + val
         left = 0
+
         # start doing a binary search to find the minimum values that are needed to get the target
         for right, val in enumerate(nums):
             if val >= target:
