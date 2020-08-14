@@ -22,6 +22,17 @@ Input: head = []
 Output: []
 Explanation: Given linked list is empty (null pointer), so return null.
 
+
+            # Creating a new weaved list of original and copied nodes.
+            # Inserting the cloned node just next to the original node.
+            # If A->B->C is the original linked list,
+            # Linked list after weaving cloned nodes would be A->A'->B->B'->C->C'
+            # Now link the random pointers of the new nodes created.
+            # Iterate the newly created list and use the original nodes random pointers,
+            # to assign references to random pointers for cloned nodes.
+            # Unweave the linked list to get back the original linked list and the cloned list.
+            # i.e. A->A'->B->B'->C->C' would be broken to A->B->C and A'->B'->C'
+
 '''
 
 class Solution(object):

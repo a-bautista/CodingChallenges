@@ -7,9 +7,16 @@ Return total time for executing this task list.
 solve([1, 1, 2, 1], 2)
 return 7
 
-'''
 
-from collections import defaultdict
+{
+task id and accumulated time
+   1     :     1
+   1     :     4
+   2     :     5
+            lastly 7 because 5 + 1 +1
+}
+
+'''
 
 
 def solve(tasks, n):

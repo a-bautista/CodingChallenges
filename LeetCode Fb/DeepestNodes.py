@@ -17,14 +17,26 @@ Explanation:
 
 '''
   Intuitively, we should be traversing from the children to the parent and calculate the
-  height from bottom. So the null nodes would have height 0. The leaf nodes would have the
+  height from bottom. 
+  So the null nodes would have height 0. The leaf nodes would have the
   height 1 and the root would have the max height.
  
-  At each node, we keep a pair<height_of_node_from_bottom, node>. At a given node, if we
-  realize that the leftHeight == rightHeight, it means we have found the deepest subtree
-  rooted at node. If leftHeight > rightHeight, it means the deepest subtree must be rooted
-  at left child. If rightHeight > leftHeight, it means the deepest subtree must be rooted
-  at right child.
+  At each node, we keep a pair<height_of_node_from_bottom, node>. 
+  At a given node, if we realize that the leftHeight == rightHeight, it means we have found the deepest subtree
+  rooted at node. 
+  If leftHeight > rightHeight, it means the deepest subtree must be rooted at left child. 
+  If rightHeight > leftHeight, it means the deepest subtree must be rooted at right child.
+  
+  when you go to node 5 you will find the following 
+  l: (1, TreeNode{val: 6, left: None, right: None})
+  r: (2, TreeNode{val: 2, left: TreeNode{val: 7, left: None, right: None}, right: TreeNode{val: 4, left: None, right: None}})
+  
+  when you are at the end of program and node 3 then you will get
+  
+  l: (3, TreeNode{val: 2, left: TreeNode{val: 7, left: None, right: None}, right: TreeNode{val: 4, left: None, right: None}})
+  r: (2, TreeNode{val: 1, left: TreeNode{val: 0, left: None, right: None}, right: TreeNode{val: 8, left: None, right: None}})
+  
+  
 '''
 
 class Solution:
@@ -42,7 +54,7 @@ class Solution:
             # if right root is greater than left node then the deepest node is at the right
             elif l[0] < r[0]:
                 return r[0] + 1, r[1]
-            # this means we have found the depest nodes and its children
+            # this means we have found the deepest nodes and its children
             else:
                 return l[0] + 1, root
 

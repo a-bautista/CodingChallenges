@@ -14,14 +14,16 @@
     The above binary tree is True because it fulfills the completeness because all of the very last nodes
     are to the very left.
 
+
+
+    The following tree doesn't satisfy the requirement of completeness because there is 1 node that
+    is not to the very left.
+
         1
        / \
       2   3
      /\   \
     4 5    7
-
-    This tree doesn't satisfy the requirement of completeness because there is 1 node that
-    is not to the very left.
 
     Use BFS to do a level order traversal, add children to the bfs queue,
     until we met the first empty node.

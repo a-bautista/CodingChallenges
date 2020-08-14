@@ -27,12 +27,12 @@ class Solution:
         count = Counter(T)
         ans = []
 
-        # Write all characters that occur in S into the list, then set that character that occurred to 0
-        # {a:0,b:0,c:0,d:0} after the update to 0
+        # Write all characters that occur in S into the list, then set that character that occurred to 0, i.e.,
+        # {a:0,b:0,c:0,d:0}
         for c in S:
+            # ans will contain the original order from the string S
             ans.append(c * count[c])
-            # Set count[c] = 0 to denote that we do not need
-            # to write 'c' to our answer anymore.
+            # Set count[c] = 0 to denote that we do not need to write c to our answer anymore
             count[c] = 0
 
         # Write all remaining characters that don't occur in S into the list

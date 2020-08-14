@@ -19,6 +19,9 @@
 
     Output: 4
 
+
+    We cannot have duplicates.
+
 """
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -32,12 +35,18 @@ class Solution:
         if type(target)!=float:
             return -1
 
+        # follow a pre-order traversal (middle -left-right)
         node = root.val
         while root:
+            # If the current value - target is less than the current value I stored - target
+            # then this means this new node is closer to my target
             if abs(root.val - target) < abs(node - target):
                 node = root.val
+
+            # move to the left if the target is less than root.val
             if target < root.val:
                 root = root.left
+            # move to the right if the target is greater than the root.val
             else:
                 root = root.right
             #root = root.left if target < root.val else root.right

@@ -26,7 +26,7 @@ class Solution:
         # (0,0) pop
         # (1,0) pop, (0,1) right
         # (0,1) pop, (2,0) left, (1,1) right
-        # (2,0) pop, (1,1), (0,2)
+        # (2,0) pop, (1,1) right, (0,2) left
         # (1,1) pop, (0,2), (2,1)
 
         queue = deque([(0, 0)])
