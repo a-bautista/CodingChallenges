@@ -137,12 +137,16 @@ class Solution:
         pq = queue.PriorityQueue()
         sorted_list_head = sorted_list_tail = ListNode(0)
 
+        # add each node list in a priority Q
         for idx, node in enumerate(lists):
             self.add_node_in_pq(idx, node, pq)
 
+        # start sorting them
         while not pq.empty():
             _, idx, node = pq.get()
+            # get the next element of the priority queue
             self.add_node_in_pq(idx, node.next, pq)
+
             node.next = None
             sorted_list_tail.next = node
             sorted_list_tail = sorted_list_tail.next
@@ -199,10 +203,16 @@ def mergeKListsBruteForce(self, lists):
         point = point.next        # go on to the next element
     return head.next              # point and head started pointing to the same ListNode, point is pointing to the last node and head is pointing to the first element after the initial 0
 
+
 if  __name__ == '__main__':
     main()
 '''
+    1->4->5,
+    1->3->4,
+    2->6
     
+first 
+elements 
     [(1, 0, [ 1, next: [ 4, next: [ 5, next: None]]]), 
      (1, 1, [ 1, next: [ 3, next: [ 4, next: None]]]), 
      (2, 2, [ 2, next: [ 6, next: None]])]
@@ -253,10 +263,14 @@ if  __name__ == '__main__':
    The space complexity depends on the sorting that we choose, let's say we pick the Mergesort then the worst case will be O(N). 
    Creating a linked list costs O(N), so the space complexity is O(N).     
     
-    Another approach is to use the iteration approach from the MergeTwoSortedLists with slightly modifications. 
-    
+     
+    solution to the priority Q
     The time complexity will be O (N log k) where k is the number of linked lists. We can merge two linked lists in O(n) time where n
     is the total number of nodes in two lists. If we sum up this process, we end up with O(N log k). 
     
-    The space complexity will be O(1) because merging these linked lists cost this amount. 
+    The space complexity will be 
+    O(n) Creating a new linked list.
+    O(k) The code above present applies in-place method which cost O(1) space. 
+    And the priority queue (often implemented with heaps) costs O(k) space (it's far less than NNN in most situations). 
+     
 '''

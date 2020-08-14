@@ -37,7 +37,7 @@ class Solution:
         return d.values()
 
 def main():
-    strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
+    strs = ["naagram", "anagram"]
     solution = Solution()
     res = solution.solve(strs)
     print(res)
