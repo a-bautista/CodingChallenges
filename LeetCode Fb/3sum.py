@@ -15,6 +15,16 @@
       [-1, 0, 1],
       [-1, -1, 2]
     ]
+
+    1. Start by sorting the array.
+    2. You need to compare each value of the array with two pointers, so you start the loop from i=0 until range(len(nums))-2.
+    3. Avoid repeated values with the following line: if i > 0 and nums[i] == nums[i-1]: continue
+    4. Set the pointers left and right and initialize the while loop l<r.
+    5. Sum the current value + left + right and if the result <0 then increase the left pointer, else if the result >0
+    then increase the right pointer, else we found the values that add up to 0, so store them in a list called result.
+    6. Increase the values of the 2 pointers and do 2 while loops for each pointer where l<r and nums[l] == nums[l+1]
+    then increase the left pointer and while l<r and nums[r] == nums[r-1] then decrease the right pointer.
+    These two conditions are necessary to avoid repeated values that you have already accounted.
 '''
 
 class Solution:

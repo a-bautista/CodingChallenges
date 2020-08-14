@@ -39,10 +39,12 @@ class Solution(object):
         #          }
 
         res = []
-        visited = set() # this is used to indicate which elements of the list or nodes have been visited
+        # this is used to indicate which elements of the list or nodes have been visited
+        visited = set()
         cache = defaultdict(list)
         for i, account in enumerate(accounts):
-            for email in account[1:]: # I start in 1 because I want the emails and position 0 is the name
+            # I start in 1 because I want the emails and position 0 is the name
+            for email in account[1:]:
                 cache[email].append(i)
 
         # dfs code for traversing the graph and add results
@@ -63,7 +65,8 @@ class Solution(object):
                     dfs(records, sub_res)
 
         for idx, account in enumerate(accounts):
-            tmp_res = set() # tmp_res contains the values of the traversed nodes
+            # tmp_res contains the values of the traversed nodes
+            tmp_res = set()
             dfs(idx, tmp_res)
             if tmp_res:
                 # return the name of the account and the traversed nodes
