@@ -15,6 +15,48 @@ Example 3:
 
 Input: num = "105", target = 5
 Output: ["1*0+5","10-5"]
+
+Basically, you need to create the DFS because you will create something like the following:
+1
+1+2
+1+2+3 (valid)
+
+1+2
+1+2-3
+
+1+2
+1+2*3
+
+1
+1-2
+1-2+3
+
+1-2
+1-2-3
+
+1
+1*2
+1*2+3
+
+1*2
+1*2+3
+
+1*2
+1*2-3
+
+1*2
+1*2*3 (valid)
+
+1+23
+1-23
+1*23
+
+12+3
+12-3
+12*3
+
+123
+
 '''
 
 class Solution:
