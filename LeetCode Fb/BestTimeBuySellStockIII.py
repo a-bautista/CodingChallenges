@@ -27,6 +27,12 @@ Output: 0
 Explanation: In this case, no transaction is done, i.e. max profit = 0.
 
 
+first buy --> first sell --> min buy and max sell
+
+second buy --> second sell --> min buy and max sell
+
+
+
 '''
 
 class Solution(object):
