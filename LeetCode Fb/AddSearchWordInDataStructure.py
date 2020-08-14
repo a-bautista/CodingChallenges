@@ -7,6 +7,7 @@
     can represent any one letter.
 
     This is the problem from Amazon Alexa.
+    Start defining your Trie and then define the add word, then the search and lastly the dfs.
 '''
 
 from collections import defaultdict
