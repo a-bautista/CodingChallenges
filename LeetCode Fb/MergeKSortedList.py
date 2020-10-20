@@ -124,7 +124,6 @@ def mergeKLists(lists):
 
 
 import queue
-
 class Solution:
 
     def add_node_in_pq(self, idx, node, pq):

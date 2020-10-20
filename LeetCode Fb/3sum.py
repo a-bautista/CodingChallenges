@@ -17,8 +17,10 @@
     ]
 
     1. Start by sorting the array.
-    2. You need to compare each value of the array with two pointers, so you start the loop from i=0 until range(len(nums))-2.
-    3. Avoid repeated values with the following line: if i > 0 and nums[i] == nums[i-1]: continue
+    2. You need to compare each value of the array with two pointers, so you start the loop from i=0 until
+        range(len(nums))-2.
+    3. Avoid repeated values with the following line:
+        if i > 0 and nums[i] == nums[i-1]: continue
     4. Set the pointers left and right and initialize the while loop l<r.
     5. Sum the current value + left + right and if the result <0 then increase the left pointer, else if the result >0
     then increase the right pointer, else we found the values that add up to 0, so store them in a list called result.
@@ -59,14 +61,51 @@ class Solution:
         return res
 
 def main():
-    nums = [-1, 0, 1, 2, -1, -4]
+    nums = [-5, 2, -1, -2, 3]
     solution = Solution()
     res = solution.solve(nums)
     print(res)
 
 main()
 
+# def search_triplets(arr):
+#   arr.sort()
+#   triplets = []
+#   for i in range(len(arr)):
+#     if i > 0 and arr[i] == arr[i-1]:  # skip same element to avoid duplicate triplets
+#       continue
+#     search_pair(arr, -arr[i], i+1, triplets)
+#   return triplets
+#
+#
+# def search_pair(arr, target_sum, left, triplets):
+#   right = len(arr) - 1
+#   while(left < right):
+#     current_sum = arr[left] + arr[right]
+#     if current_sum == target_sum:  # found the triplet
+#       triplets.append([-target_sum, arr[left], arr[right]])
+#       left += 1
+#       right -= 1
+#       while left < right and arr[left] == arr[left - 1]:
+#         left += 1  # skip same element to avoid duplicate triplets
+#       while left < right and arr[right] == arr[right + 1]:
+#         right -= 1  # skip same element to avoid duplicate triplets
+#     elif target_sum > current_sum:
+#       left += 1  # we need a pair with a bigger sum
+#     else:
+#       right -= 1  # we need a pair with a smaller sum
+
+
+# def main():
+#   print(search_triplets([-3, 0, 1, 2, -1, 1, -2]))
+#   print(search_triplets([-5, 2, -1, -2, 3]))
+#
+# main()
+
 '''
     Time complexity: O(N**2) and sorting takes O(N*Log(N)) = O((N**2)+(N*Log(N)))
     Space complexity: O(1) 
+    
+    [[-3, 1, 2], [-2, 0, 2], [-2, 1, 1], [-1, 0, 1]]
+    [[-5, 2, 3], [-2, -1, 3]]
 '''

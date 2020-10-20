@@ -29,7 +29,6 @@ class Solution:
                 hi = mid
             else:
                 lo = mid+1
-
         return lo
 
 
@@ -46,8 +45,8 @@ class Solution:
         return [left_idx, self.extreme_insertion_index(nums, target, False)-1]
 
 def main():
-    nums = [5,7,7,8,8,10]
-    target = 8
+    nums = [2,2]
+    target = 3
     nums2 = [1,2,5,5,5,9]
     target2 = 9
     solution = Solution()

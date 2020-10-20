@@ -70,7 +70,7 @@ def main():
 
     # da. will give True because you need a 3 letter word
     # mad will be False
-    lookFor = ['d addy','mad','da.']
+    lookFor = ['d.']
     for word in lookFor:
         res = wordDictionary.search(word)
         print(res)

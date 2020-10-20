@@ -1,7 +1,6 @@
 '''
     A simple implementation uses two iterations. In the first iteration, we add each element's value and its index to the table.
-    Then, in the second iteration we check if each element's complement (target−nums[i]target - nums[i]target−nums[i])
-    exists in the table.
+    Then, in the second iteration we check if each element's complement (target−nums[i]target - nums[i]target−nums[i]) exists in the table.
 
     Beware that the complement must not be nums[i]nums[i]nums[i] itself!
 
@@ -15,30 +14,11 @@ class Solution:
     def twoSum(self, nums, target):
         d = {}
         for i, n in enumerate(nums):
-            # complement is how much is missing to achieve the target
-            # if the complement is already in the dictionary, then we have found the two numbers
-            # (x and complement that add up to the target).
             complement = target - n
             if complement in d:
                 return [d[complement], i]
             else:
                 d[n] = i
-
-        # in case we didn't find the number
-        # we went through all the numbers and the dictionary contains all the elements
-        if len(d)==len(nums):
-            return -1
-
-
-
-def main():
-    nums = [2, 7, 11, 15]
-    target = 18
-    solution = Solution()
-    res = solution.twoSum(nums, target)
-    print(res)
-
-main()
 
 '''
     Given an array of integers, return indices of the two numbers such that they add up to a specific target.

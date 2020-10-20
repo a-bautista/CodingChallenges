@@ -42,9 +42,9 @@ Let dp[ i ] = the number of ways to parse the string s[1: i + 1]
 
 For example:
 s = "231"
-index 0: extra base offset. dp[0] = 1
-index 1: # of ways to parse "2" => dp[1] = 1
-index 2: # of ways to parse "23" => "2" and "23", dp[2] = 2
+index 0: extra base offset. dp[0] = 1, [1,0,0,0]
+index 1: # of ways to parse "2" => dp[1] = 1, [1,1,0,0]
+index 2: # of ways to parse "23" => "2" and "23", dp[2] = 2, [1,1,(1+1),0]
 index 3: # of ways to parse "231" => "2 3 1" and "23 1" => dp[3] = 2
 
 '''
@@ -55,49 +55,46 @@ class Solution:
             return 0
 
         '''
-        12312
-        ^
-        1 way
-        
-        [1,1,0,0,0,0]
-        
-        12312
-         ^
-        2 ways because we have 12
-        
-        [1,1,2,0,0,0]
-        
-        
-        12312
-          ^
-        3 ways because we have 1 and 23, 12 and 3, 1 and 2 and 3
-        
-        [1,1,2,3,0,0]
-        
-        12312
-           ^
-        1 way to decode the 1 because we cannot have the 31, so 
-        we add it to the current ways, we have 
-        1 and 23 and 1, 12 and 3 and 1, 1 and 1 and 2 and 3.
-        
-        [1,1,2,3,3,0]
-
-        12312
+            12312
             ^
-        for one digit
-        we can decode this as 1 and 12, so we have 
-        1 and 23 and 12, 12 and 3 and 1 and 2, 
-        1 and 2 and 3 and 1 and 2.
-        
-        for two digit
-        we can decode this as as 12 and 3 and 12, 1 and 2 and 
-        and 3 and 12, 1 and 23 and 12. we have 6 ways to decode the message
-         
-        [1,1,2,3,3,6]
+            1 way
+            
+            [1,1,0,0,0,0]
+            
+            12312
+             ^
+            2 ways because we have 12
+            
+            [1,1,2,0,0,0]
+            
+            
+            12312
+              ^
+            3 ways because we have 1 and 23, 12 and 3, 1 and 2 and 3
+            
+            [1,1,2,3,0,0]
+            
+            12312
+               ^
+            1 way to decode the 1 because we cannot have the 31, so 
+            we add it to the current ways, we have 
+            1 and 23 and 1, 12 and 3 and 1, 1 and 1 and 2 and 3.
+            
+            [1,1,2,3,3,0]
+    
+            12312
+                ^
+            for one digit
+            we can decode this as 1 and 12, so we have 
+            1 and 23 and 12, 12 and 3 and 1 and 2, 
+            1 and 2 and 3 and 1 and 2.
+            
+            for two digit
+            we can decode this as as 12 and 3 and 12, 1 and 2 and 
+            and 3 and 12, 1 and 23 and 12. we have 6 ways to decode the message
+             
+            [1,1,2,3,3,6]
 
-
-        
-        
         '''
 
         dp = [0 for _ in range(len(s) + 1)]
@@ -128,11 +125,9 @@ def main():
     solution = Solution()
     res = solution.decode(s)
     print(res)
-
-
 main()
 
 '''
-Time complexity: O(N)
-Space complexity: O(1)
+    Time complexity: O(N)
+    Space complexity: O(1)
 '''

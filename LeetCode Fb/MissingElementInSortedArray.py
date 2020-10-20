@@ -19,6 +19,7 @@ class Solution:
         while left <= right:
             mid = left + (right - left) // 2
             missing = nums[mid] - nums[last] + 1 - (mid - last + 1)
+
             if k > missing:
                 last = mid
                 k -= missing
@@ -29,8 +30,8 @@ class Solution:
 
 
 def main():
-    nums = [4,7,9,10]
-    k = 3
+    nums = [4,5,6,8,10]
+    k = 2
     solution = Solution()
     re = solution.missingElement(nums, k)
     print(re)

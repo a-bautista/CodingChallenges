@@ -16,30 +16,51 @@
 """
 
 class Solution:
+    # def validPalindrome(self, s):
+    #     """
+    #     :type s: str
+    #     :rtype: bool
+    #     """
+    #     # Time: O(n)
+    #     # Space: O(n)
+    #     left, right = 0, len(s) - 1
+    #     while left < right:
+    #         if s[left] != s[right]:
+    #             one, two = s[left:right], s[left + 1:right + 1]
+    #             # [::-1] indicates to invert string
+    #             # second last letter, i.e., [bi] -> [ib]
+    #             print(one)
+    #             #print(one == one[::-1])
+    #             print(two)
+    #             print(two[::-1])
+    #             return one == one[::-1] or two == two[::-1]
+    #         left, right = left + 1, right - 1
+    #     return True
+
     def validPalindrome(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
-        # Time: O(n)
-        # Space: O(n)
-        left, right = 0, len(s) - 1
-        while left < right:
-            if s[left] != s[right]:
-                one, two = s[left:right], s[left + 1:right + 1]
-                # [::-1] indicates to switch the last letter with the
-                # second last letter, i.e., [bi] -> [ib]
-                print(one)
-                #print(one == one[::-1])
-                print(two)
-                print(two[::-1])
-                return one == one[::-1] or two == two[::-1]
-            left, right = left + 1, right - 1
+        i, j = 0, len(s) - 1
+
+        while i < j:
+            if s[i] == s[j]:
+                i += 1
+                j -= 1
+            else:
+                return self.validPalindromeUtil(s, i + 1, j) \
+                       or self.validPalindromeUtil(s, i, j - 1)
+        return True
+
+    def validPalindromeUtil(self, s, i, j):
+        while i < j:
+            if s[i] == s[j]:
+                i += 1
+                j -= 1
+            else:
+                return False
         return True
 
 
 def main():
-    s = 'abbx'
+    s = 'abbia'
     solution = Solution()
     res = solution.validPalindrome(s)
     print(res)

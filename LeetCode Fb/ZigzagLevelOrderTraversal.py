@@ -53,3 +53,16 @@ class Solution:
                 if node.right:
                     tmp.append((node.right, depth + 1))
         return result
+
+def main():
+
+    Tree = TreeNode(3)
+    Tree.right = TreeNode(9)
+    Tree.left = TreeNode(20)
+    Tree.left.left = TreeNode(15)
+    Tree.left.right = TreeNode(28)
+    solution = Solution()
+    res = solution.zigzagLevelOrder(Tree)
+    print(res)
+
+main()

@@ -14,9 +14,6 @@
         Explanation: T is "aa" which its length is 2.
 
 """
-
-from collections import defaultdict
-
 class Solution:
     def lengthOfLongestSubstringTwoDistinct(self, s: 'str', k: int) -> int:
         n = len(s)
@@ -32,7 +29,6 @@ class Solution:
         hashmap = dict()
 
         max_len = 1
-
         while right < n:
             # add new characters and move right pointer to keep adding letters
             hashmap[s[right]] = right
@@ -48,11 +44,31 @@ class Solution:
                 del hashmap[s[del_idx]]
                 # move left pointer of the slidewindow
                 left = del_idx + 1
-
             # max len keeps the values of the substring
             max_len = max(max_len, right - left)
         return max_len
 
+'''
+def solve(str1, k):
+    hashmap = {}
+    window_start = 0
+    
+    for window_end in range(len(str1)):
+        char_right = str1[window_end]
+        if char_right not in hashmap:
+            hashmap[char_right] = 0
+        hashmap[char_right] +=1
+        
+    
+        
+
+    max_length = max(max_length, )
+        
+            
+            
+    
+
+'''
 
 def main():
     s = 'cceebazy'
@@ -71,10 +87,9 @@ main()
     In that case at each step one uses O(k) time to find a minimum value in the hashmap with 
     k elements and so the overall time complexity is O(Nk).
 
-    Time complexity : O(N)\mathcal{O}(N)O(N) in the best case of k distinct characters in the string and 
+    Time complexity : O(N) in the best case of k distinct characters in the string and 
     O(Nk)\mathcal{O}(N k)O(Nk) in the worst case of N distinct characters in the string.
 
     Space complexity : O(k) since additional space is used only for a hashmap with 
     at most k + 1 elements. 
-
 """

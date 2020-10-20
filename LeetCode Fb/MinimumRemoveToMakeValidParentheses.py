@@ -20,7 +20,6 @@
 
         Input: s = "a)b(c)d"
         Output: "ab(c)d"
-
 """
 
 class Solution:
@@ -42,7 +41,8 @@ class Solution:
             else:
                 stack.pop()
 
-        # this line is used to join the parenthesis that were left in the stack with the indexes_to_remove
+        # this line is used to join the parenthesis that were left
+        # in the stack with the indexes_to_remove
         indexes_to_remove = indexes_to_remove.union(set(stack))
         string_builder = []
 

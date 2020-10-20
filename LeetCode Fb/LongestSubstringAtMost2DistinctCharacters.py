@@ -24,7 +24,6 @@ class Solution:
         # hashmap character -> its rightmost position
         # in the sliding window
         hashmap = dict()
-
         max_len = 2
 
         while right < n:
@@ -42,7 +41,6 @@ class Solution:
                 left = del_idx + 1
 
             max_len = max(max_len, right - left)
-
         return max_len
 
 
