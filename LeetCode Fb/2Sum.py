@@ -26,21 +26,23 @@ class Solution:
                 right -=1
         return [-1,-1]
 
-        # d = {}
-        # for i, n in enumerate(nums):
-        #     # complement is how much is missing to achieve the target
-        #     # if the complement is already in the dictionary, then we have found the two numbers
-        #     # (x and complement that add up to the target).
-        #     complement = target - n
-        #     if complement in d:
-        #         return [d[complement], i]
-        #     else:
-        #         d[n] = i
-        #
-        # # in case we didn't find the number
-        # # we went through all the numbers and the dictionary contains all the elements
-        # if len(d)==len(nums):
-        #     return -1
+
+    # def solve(nums, target):
+    #     seen = set()
+    #     output = set()
+    #
+    #     for i in range(len(nums)):
+    #         num1 = target - nums[i]
+    #
+    #         if num1 not in seen:
+    #             seen.add(nums[i])
+    #         else:
+    #             output.add((min(nums[i], num1), max(nums[i], num1)))
+    #
+    #     if len(output) == 0:
+    #         return -1
+    #
+    #     return output
 
 def main():
     nums = [1,3,3,2,5]

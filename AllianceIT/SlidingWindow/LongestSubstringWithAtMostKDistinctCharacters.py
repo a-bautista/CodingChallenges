@@ -3,6 +3,7 @@ def longest_substring_with_k_distinct(str1, k):
   max_length = 0
   char_frequency = {}
 
+  # this is how you make a Counter
   # in the following loop we'll try to extend the range [window_start, window_end]
   for window_end in range(len(str1)):
     right_char = str1[window_end]

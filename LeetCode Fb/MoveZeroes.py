@@ -28,12 +28,13 @@ class Solution:
                 zero += 1
         return nums
 
+
 def main():
     #nums = [0,0,0,0,1]
     nums2 = [2,1,7,3,0,1]
     nums = [0,1,1,0,1]
     solution = Solution()
-    res = solution.moveZeroes(nums2)
+    res = solution.moveZeroes(nums)
     print(res)
 
 main()

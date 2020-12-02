@@ -28,6 +28,23 @@ class Solution:
                 right -=1
         return [-1,-1]
 
+# def solve(nums, target):
+    #     seen = set()
+    #     output = set()
+    #
+    #     for i in range(len(nums)):
+    #         num1 = target - nums[i]
+    #
+    #         if num1 not in seen:
+    #             seen.add(nums[i])
+    #         else:
+    #             output.add((min(nums[i], num1), max(nums[i], num1)))
+    #
+    #     if len(output) == 0:
+    #         return -1
+    #
+    #     return output
+
 def main():
     nums = [4,7,8,53,56]
     target = 15
