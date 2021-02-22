@@ -40,7 +40,8 @@ def my_solution(nums, k):
 if __name__ == '__main__':
     main()
 '''
-  Given an array of n elements and an integer k, return the max values from n elements based on the scope of k, that is:
+  Given an array of n elements and an integer k, 
+  return the max values from n elements based on the scope of k, that is:
 
   [8,4,6,12] and k=2
 

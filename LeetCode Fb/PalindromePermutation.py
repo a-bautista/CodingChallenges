@@ -14,7 +14,8 @@ class Solution:
 
         count1 = 0
         for val in dic.values():
-            # basically if aaba which has 3 'a' then when mod by 2 will give 1 and when you do the b then you will get another 1, so this is not palindrome
+            # basically if aaba which has 3 'a' then when mod by 2 will give 1 and when you do the b then you
+            # will get another 1, so this is not palindrome
             if val % 2 == 1:
                 count1 += 1
             if count1 > 1:
@@ -22,7 +23,7 @@ class Solution:
         return True
 
 def main():
-    input = 'aaba'
+    input = 'carecar'
     solution = Solution()
     res = solution.canPermutePalindrome(input)
     print(res)

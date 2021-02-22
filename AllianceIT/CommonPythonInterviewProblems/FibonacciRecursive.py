@@ -1,5 +1,5 @@
 from functools import reduce
-def fibo(n):
+def fibo_starting_at_one(n):
 
     # check that the input is a positive integer
     if type(n)!=int:
@@ -7,15 +7,14 @@ def fibo(n):
 
     if n < 1:
         raise ValueError("n must be a positive integer number")
-
     if n==1:
         return 0
     elif n==2:
         return 1
     else:
-        return fibo(n-1)+fibo(n-2)
+        return fibo_starting_at_one(n-1)+fibo_starting_at_one(n-2)
 
-def fibo2(n):
+def fibo_starting_at_zero(n):
     if n <0:
         raise ValueError("N must be a positive integer")
     if n==0:
@@ -23,14 +22,14 @@ def fibo2(n):
     elif n==1:
         return 1
     else:
-        return fibo2(n-1)+fibo2(n-2)
+        return fibo_starting_at_zero(n-1)+fibo_starting_at_zero(n-2)
 
 def main():
     fib_series =  lambda n:reduce(lambda x, _:x+[x[-1]+x[-2]], range(n-2),[0,1])
     print(fib_series(5))
     n = 5
-    print(fibo(n))
-    print(fibo2(n))
+    print(fibo_starting_at_one(n))
+    print(fibo_starting_at_zero(n))
 
 
 main()

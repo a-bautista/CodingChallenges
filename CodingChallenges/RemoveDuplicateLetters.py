@@ -39,7 +39,7 @@ class Solution:
                 #    3. it's not the last occurrence
                 # we remove it from the solution to keep the solution optimal
                 # i < last_occurrence[stack[-1]] indicates that if the current index of letter c
-                # is less than the last occurrence of the letter contained in the stack then it mean
+                # is less than the last occurrence of the letter contained in the stack then it means
                 # we still have more of the contained letters in the stack in the s string
                 while stack and c < stack[-1] and i < last_occurrence[stack[-1]]:
                     seen.discard(stack.pop())
@@ -47,6 +47,13 @@ class Solution:
                 stack.append(c)
         return ''.join(stack)
 
+def main():
+    s = "cbacdcbc"
+    s1 = "aaaaaba"
+    sol = Solution()
+    print(sol.removeDuplicateLetters(s1))
+
+main()
 
 '''
     Time complexity: O(N)
