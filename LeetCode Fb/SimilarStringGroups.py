@@ -1,7 +1,8 @@
+from collections import defaultdict
 class Solution:
-    def numSimilarGroups(self, A: List[str]) -> int:
+    def numSimilarGroups(self, A):
 
-        adj = collections.defaultdict(set)
+        adj = defaultdict(set)
         set_A = set(A)
         if len(A) < len(A[0]):
             for i in range(len(A)):

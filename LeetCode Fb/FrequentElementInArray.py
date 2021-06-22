@@ -1,7 +1,7 @@
 
 
 '''
-    Given non-decreasing array and a value k return the number of occurences of k in the array
+    Given non-decreasing array and a value k return the number of occurrences of k in the array
 
     Your algorithm's runtime complexity must be in the order of O(log n).
 

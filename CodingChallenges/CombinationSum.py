@@ -56,8 +56,8 @@ class Solution:
         return results
 
 def main():
-    nums = [2,3,5]
-    target = 7
+    nums = [1,2,3]
+    target = 6
     solution = Solution()
     res = solution.combinationSum(nums, target)
     print(res)

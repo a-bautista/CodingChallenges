@@ -12,7 +12,6 @@
 
 class Solution:
     # @return a tuple, (index1, index2)
-    # 8:42
     def twoSum(self, nums, target):
         left = 0
         right = len(nums)-1
@@ -45,8 +44,8 @@ class Solution:
     #     return output
 
 def main():
-    nums = [1,3,3,2,5]
-    target = 5
+    nums = [3,2,4]
+    target = 6
     solution = Solution()
     res = solution.twoSum(nums, target)
     print(res)
@@ -62,5 +61,5 @@ main()
     Given nums = [2, 7, 11, 15], target = 9,
 
     Because nums[0] + nums[1] = 2 + 7 = 9,
-    return [0, 1].
+    return [0, 1]
 '''

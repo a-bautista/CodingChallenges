@@ -35,24 +35,21 @@ class Solution(object):
         return sum
 
     '''
-    input = [1,[4,[6]]]
-             ^
-    first iteration, 1 is an integer and depth is 1, so 1*1 = 1
-    input = [1,[4,[6]]]
-                ^
-    second iteration, we have a list, so it's not an integer then go back again to the function 
-    sum = 1 
-    depth = 2
-    
-    so 2*4 = 8 and add this 8 to the previous sum which was 9
-    third iteration, we have another list, so it's not an integer then go back to the function
-    sum = 9
-    depth = 3
-    
-    so 3*6 = 18 and 18 + 9 = 27 
-    
-    
-    
+        input = [1,[4,[6]]]
+                 ^
+        first iteration, 1 is an integer and depth is 1, so 1*1 = 1
+        input = [1,[4,[6]]]
+                    ^
+        second iteration, we have a list, so it's not an integer then go back again to the function 
+        sum = 1 
+        depth = 2
+        
+        so 2*4 = 8 and add this 8 to the previous sum which was 9
+        third iteration, we have another list, so it's not an integer then go back to the function
+        sum = 9
+        depth = 3
+        
+        so 3*6 = 18 and 18 + 9 = 27 
     '''
 
 

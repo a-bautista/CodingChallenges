@@ -26,7 +26,6 @@
     Space complexity : O(k) to store the heap elements. 
 """
 from heapq import heappush, heappop
-import unittest
 
 class Solution2:
     def findKthLargest(self, nums, k):

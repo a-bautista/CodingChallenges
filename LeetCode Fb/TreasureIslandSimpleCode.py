@@ -32,6 +32,7 @@ class Solution:
                         print(q)
         return -1
 
+
     def validateMatrix(self, x, y, direction, matrix):
         # get the total rows # and total columns
         nrow, ncol = len(matrix), len(matrix[0])
@@ -39,14 +40,11 @@ class Solution:
             return True
         return False
 
-
-
-
 if __name__ == '__main__':
     treasure_map = [['O', 'O', 'O', 'O'],
-                    ['#', 'O', '#', 'O'],
+                    ['D', 'O', 'D', 'O'],
                     ['O', 'O', 'O', 'O'],
-                    ['X', '#', '#', 'O']]
+                    ['X', 'D', 'D', '0']]
 
     solution = Solution()
     res = solution.solution(treasure_map)

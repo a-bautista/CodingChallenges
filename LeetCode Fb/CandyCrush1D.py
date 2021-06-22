@@ -5,10 +5,11 @@ def candy_crush(input):
     
     stack = []
     # start adding the first letter
+    # this stack indicates the letter and the total count of that letter
     stack.append([input[0], 1])
     
     for i in range(1, len(input)):
-        # if the next letter is different from the last letter in the stack
+        # if the next letter is different from the last letter from the current input
         if input[i] != input[i-1]:
             # clear the stack only if the top letters in the stack have more than 3 letters
             if stack[-1][1] >= 3:
@@ -38,6 +39,7 @@ def candy_crush(input):
     
 #print(candy_crush("aaaabbbc")) #c
 print(candy_crush("aabbbacd")) #cd
+print(candy_crush("aabbbccda")) #cd
 #print(candy_crush("aabbccddeeedcba")) #blank expected
 print(candy_crush("dddabbbbaccccaax")) #x
 

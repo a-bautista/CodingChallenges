@@ -12,7 +12,8 @@ class Solution:
 
 
     def helper(self, root):
-        """Idea: Construct a DLL for each subtree, then return the head and tail. the order is in order traversal (left, root, right)."""
+        """Idea: Construct a DLL for each subtree, then return the head and tail.
+        The order is in order traversal (left, root, right)."""
         head, tail = root, root
 
         if root.left:
@@ -41,9 +42,6 @@ class Solution:
 
 
 '''
-
-    
-
         12
        /  \
       7   24
@@ -52,13 +50,10 @@ class Solution:
    / \
   1   3   
   
-  
-  
         tail ^ right head
             |
   1 <---->  2        <--->   3
   |         |                |
 left_tail head ^ left_head right_tail
-  
    
 '''

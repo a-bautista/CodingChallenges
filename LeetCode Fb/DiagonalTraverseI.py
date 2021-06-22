@@ -25,7 +25,7 @@ class Solution(object):
             return []
 
         matrix_len = len(matrix)
-        row_len    = len(matrix[0])
+        col_len    = len(matrix[0])
 
         res = []
         lines = defaultdict(list)
@@ -35,13 +35,13 @@ class Solution(object):
         # this is the data structure that I want to achieve for [[2, 3, 5, 4],[7, 8, 1, 9],[1, 2, 4, 5]]
         # 0:[2], 1:[3,7], 2:[5,8,1], 3:[4,1,2], 4:[9,4], 5:[5]
 
-        for col in range(matrix_len):
-            for row in range(row_len):
-                lines[col+row].append(matrix[col][row])
+        for row in range(matrix_len):
+            for col in range(col_len):
+                lines[row+col].append(matrix[row][col])
 
         # Step 2: We need to reverse the rows that are even
         # 0:[2], 1:[3,7], 2:[5,8,1], 3:[4,1,2], 4:[9,4], 5:[5], so rows 0,2,4
-        for k in range(matrix_len + row_len - 1):
+        for k in range(matrix_len + col_len - 1):
             if k % 2 == 0:
                 res += lines[k][::-1]
             else:

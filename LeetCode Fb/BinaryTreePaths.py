@@ -20,29 +20,47 @@ Explanation: All root-to-leaf paths are: 1->2->5, 1->3
 
 
 '''
+class Node:
+    def __init__(self, key):
+        self.val = key
+        self.left, self.right = None, None
 
 class Solution:
-    def __init__(self):
-        self.paths = []
+    def solve(self, root):
+        def construct_paths(root, current_path):
+            if root:
+                current_path += str(root.val)
+                # if you reach a leaf then append the entire path to the main paths
+                if not root.left and not root.right:
+                    paths.append(current_path)  # update paths
+                else:
+                    current_path += '->'  # extend the current path
+                    construct_paths(root.left, current_path)
+                    construct_paths(root.right, current_path)
 
-    def construct_paths(self, root, current_path):
+        paths = []
+        construct_paths(root, '')
+        return paths
 
-        if root:
-            current_path += str(root.val)
-            # if you reach a leaf then append the entire path to the main paths
-            if not root.left and not root.right:
-                self.paths.append(current_path)  # update paths
-            else:
-                current_path += '->'  # extend the current path
-                self.construct_paths(root.left, current_path)
-                self.construct_paths(root.right, current_path)
+def main():
+    # root = Node(1)
+    # root.left = Node(2)
+    # root.right = Node(3)
+    # root.left.right = Node(5)
+    root = Node(1)
+    root.left = Node(4)
+    root.right = Node(10)
+    root.right.left = Node(2)
+    root.left.left = Node(12)
+    solution = Solution()
+    res = solution.solve(root)
+    print(res)
 
-        #paths = []
-        self.construct_paths(root, '')
-        return self.paths
+
+
+main()
 
 '''
     Time complexity: O(N)
     Space complexity: O(N)
-
 '''

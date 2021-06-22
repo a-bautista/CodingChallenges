@@ -30,8 +30,8 @@ class Solution:
 
 
 def main():
-    nums = [4,5,6,8,10]
-    k = 2
+    nums = [4,6,7,8]
+    k = 3
     solution = Solution()
     re = solution.missingElement(nums, k)
     print(re)

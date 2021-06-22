@@ -24,11 +24,8 @@ def traverse(root):
         queue.append(currentNode.left) #bring the left nodes of level from above
       if currentNode.right:
         queue.append(currentNode.right) #bring the right nodes of level from above
-
     result.append(currentLevel)
-
   return result
-
 
 def main():
   root = TreeNode(12)

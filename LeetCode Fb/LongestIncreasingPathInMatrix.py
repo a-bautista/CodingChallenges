@@ -30,6 +30,11 @@ Explanation: The longest increasing path is [3, 4, 5, 6]. Moving diagonally is n
 
 from collections import deque
 class Solution:
+    # def validate(self, grid, newX, newY):
+    #     rows = len(grid)
+    #     cols = len(grid[0])
+    #     if newX > grid[rows][cols]
+
     def longestIncreasingPath(self, matrix):
         # corner case
         if not matrix or not matrix[0]:
@@ -43,6 +48,8 @@ class Solution:
         def dfs(i, j):
             if not dp[i][j]:  # if this position is not visited
                 val = matrix[i][j]
+                directions = [(0,1),(0,-1), (1,0), (-1,0)]
+                #if self.validate()
                 # search four directions to find out the decreasing path
                 # up
                 if i and val > matrix[i - 1][j]:

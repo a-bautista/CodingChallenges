@@ -3,9 +3,13 @@ from typing import List
 def main():
 
     #solution = Solution.merge(Solution,[[1, 3], [2, 6], [8, 10], [7, 18]])
-    solution2 = Solution.merge(Solution, [[1,9], [2, 5], [19, 20], [10, 11], [12,20], [0,3], [0,1], [0,2]])
+    #solution2 = Solution.merge(Solution, [[1,9], [2, 5], [19, 20], [10, 11], [12,20], [0,3], [0,1], [0,2]])
     #print(solution)
-    print(solution2)
+    #print(solution2)
+    solution = Solution()
+    res = solution.merge([[1,5], [3,7], [4,6], [6,8], [10,12], [11,15]])
+    print(res)
+
 
 class Solution:
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:

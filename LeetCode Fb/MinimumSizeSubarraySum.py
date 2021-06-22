@@ -25,6 +25,18 @@ class SolutionON:
                 left += 1
         return result if result <= len(nums) else 0
 
+    def solve(self, target, nums):
+        total = window_start = 0
+        # out of index
+        result = len(nums) + 1
+        for window_end in range(len(nums)):
+            total += nums[window_end]
+            while total >= target:
+                result = min(result, window_end - window_start + 1)
+                total -= nums[window_start]
+                window_start +=1
+        return result if result <= len(nums) else 0
+
 class SolutionONLogN:
     def minSubArrayLen(self, target, nums):
         result = len(nums) + 1
@@ -61,8 +73,10 @@ def main():
     s = 7
     nums = [2, 3, 1, 2, 4, 3]
     solution = SolutionONLogN()
+    solution2 = SolutionON()
+    res0 = solution2.solve(s, nums)
     res = solution.minSubArrayLen(s,nums)
-    print(res)
+    print(res0)
 
 main()
 '''

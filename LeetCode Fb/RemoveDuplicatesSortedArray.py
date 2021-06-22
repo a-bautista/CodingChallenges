@@ -17,7 +17,7 @@ def remove_duplicates(arr):
 
 def main():
   print(remove_duplicates([2, 3, 3, 3, 6, 9, 9]))
-  print(remove_duplicates([2, 2, 2, 11]))
+  #print(remove_duplicates([2, 2, 2, 11]))
 
 
 main()

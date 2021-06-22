@@ -41,12 +41,12 @@
 '''
 
 from queue import PriorityQueue
-import heapdict # this package was installed because it wasn't included in Python modules
+#import heapdict # this package was installed because it wasn't included in Python modules
 
 def main():
 
     q = PriorityQueue()
-    q2 = heapdict.heapdict()
+    #q2 = heapdict.heapdict()
 
     q.put((2,'g'))
     q.put((4,'h'))
@@ -54,9 +54,9 @@ def main():
     q.put((10,'h'))
     q.put((3,'jiu'))
 
-    q2['h'] = 20
-    q2['u'] = 1
-    q2['w'] = 3
+    # q2['h'] = 20
+    # q2['u'] = 1
+    # q2['w'] = 3
 
     print('Print all the elements in the Priority Q:')
     print(q.queue)
@@ -70,17 +70,16 @@ def main():
     print('Print all the elements in the Priority Q:')
     print(q.queue)
 
-    print('\nImplementation of the Priority Q with heapdict')
-    print('List of key:value pairs in h:\n',
-          list(q2.items()))
+    # print('\nImplementation of the Priority Q with heapdict')
+    # print('List of key:value pairs in h:\n', list(q2.items()))
 
-    print('value with the lowest priority:', q2.peekitem())
-    print('Removing the value with the lowest priority\n')
+    # print('value with the lowest priority:', q2.peekitem())
+    # print('Removing the value with the lowest priority\n')
 
 
-    q2.popitem()
-    print('list of key:value pairs in h:\n',
-          list(q2.items()))
+    # q2.popitem()
+    # print('list of key:value pairs in h:\n',
+    #       list(q2.items()))
 
     #print(q2.get())
 

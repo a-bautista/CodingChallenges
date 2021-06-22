@@ -45,7 +45,7 @@ def main():
     l1 = [1,2,3,3,3]
     solution = Solution(l1)
     #solution.nums = l1
-    res = solution.pick(2)
+    res = solution.pick(3)
     print(res)
 
 main()

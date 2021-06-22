@@ -37,7 +37,7 @@ class Solution:
                         rooms[nextPos[0]][nextPos[1]] = distance
                         queue.append(nextPos)
 
-    '''
-        Time complexity: O(M*n)
-        Space complexity: O(M*n)
-    '''
+'''
+    Time complexity: O(M*n)
+    Space complexity: O(M*n)
+'''

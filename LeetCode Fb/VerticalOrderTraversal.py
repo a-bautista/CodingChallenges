@@ -11,7 +11,9 @@ def main():
     tree.right.right = TreeNode(10)
 
     solution = Solution()
-    result = solution.print_preorder(tree)
+    res = solution.solve(tree)
+    print(res)
+    # result = solution.print_preorder(tree)
     #print(result)
 
 class TreeNode:
@@ -141,12 +143,13 @@ Output:
     level -1 of node 3 you store hash_map[-1]:[3]
     level -2 of node 2 you store hash_map[-2]:[2] # end recursion
     
-
+    
     level -1 of node 3 (right) hash_map[-1+1=0] you store hash_map[0].append(4) # [0]:[5,4] end recursion
     level 0 of node 5 (right) hash_map[0+1] you store hash_map[1].append(8) 
     level 0 of node 8 (left) hash_map[1-1=0] you store [0]:[5,4,7] 
     level -1 of node 8 # end recursion
     level 2 of node 5 (right) hash_map[1+1=2] you store [10]
+    
     
     you store hash_map[-1+1=0] don't store [3]
     level 1 of node 3 you store hash_map[0+1] 

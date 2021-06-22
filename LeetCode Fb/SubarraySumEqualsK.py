@@ -41,8 +41,8 @@ class Solution(object):
         return total
 
 def main():
-    nums = [1, 2, 1, 3]
-    k = 3
+    nums = [1, 1, 1, 1]
+    k = 2
     solution = Solution()
     res = solution.subarraySum(nums, k)
     print(res)

@@ -20,14 +20,14 @@ can take course 2 if you have already taken course 1. return False
 Directed graph because we have a source and destination.
 '''
 
-import collections
+from collections import deque
 class Solution:
     def canFinish(self, numCourses, prerequisites):
-        # [[],[0],[1],[2]]
         edges = [[] for _ in range(numCourses)]
-        # [0,0,0,0]
+        # [[],[0],[1],[2]]
+        # degrees represent the visited nodes
         degrees = [0] * numCourses
-
+        # [0,0,0,0]
         # below is going to indicate if the graph is connected
         # or if it is the last node which is not connected
         # [1, 1, 1, 0] which represent processed nodes (0) and not processed nodes (1)
@@ -35,8 +35,11 @@ class Solution:
             edges[pre_course].append(course)
             degrees[course] += 1
 
+        queue = deque()
         # find the last course which is not connected (destination), in this case 3 is the course which is not connected
-        queue = collections.deque(course for course, degree in enumerate(degrees) if not degree)
+        for course, degree in enumerate(degrees):
+            if not degree:
+                queue.append(course)
 
         while queue:
             course = queue.popleft()

@@ -59,7 +59,7 @@ def main():
     s2 = '))(('
     s3 = '(a(b(c)d)'
     solution = Solution()
-    res = solution.minRemoveToMakeValid(s1)
+    res = solution.minRemoveToMakeValid(s)
     print(res)
 
 main()

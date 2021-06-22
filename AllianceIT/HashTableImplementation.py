@@ -75,7 +75,7 @@ def main():
     hash_table = HashTable(5)
     hash_table[2] = "Two"
     hash_table[1] = "One"
-    print(hash_table[2])
+    print(hash_table[0])
 
 
 main()

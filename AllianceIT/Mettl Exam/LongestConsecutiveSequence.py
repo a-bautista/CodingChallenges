@@ -73,5 +73,6 @@ def main():
 main()
 
 '''
-    Time complexity: n*log(N)
+    Time complexity: n*log(N) with sorting. O(N) without sorting
+    
 '''

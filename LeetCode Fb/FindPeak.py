@@ -20,9 +20,11 @@ class Solution:
         left = 0
         right = len(nums)-1
 
-        # do the binary search
+        # do the binary search because it is sorted
         while left < right:
             mid = left + (right -left)//2
+            # if the middle number is greater than the next element and the middle number is also greater than the
+            # previous element then we found the peak element
             if nums[mid] > nums[mid+1] and nums[mid]> nums[mid-1]:
                 return mid
             elif nums[mid+1]>nums[mid]:

@@ -58,20 +58,22 @@ def find_substring(str1, pattern):
       if char_frequency[right_char] >= 0:  # Count every matching of a character
         matched += 1
 
-    # Shrink the window if we can to match the pattern in the string. Min lenght captures the index of the ending pattern of the string
-    # whereas window_start captures the index where the pattern begins. Once the pattern has been captured, remove a matched character
-    # to continue moving into the rest of characters of the string.
+    # Shrink the window if we can to match the pattern in the string. Min lenght captures the index of the ending
+    # pattern of the string whereas window_start captures the index where the pattern begins. Once the pattern
+    # has been captured, remove a matched character to continue moving into the rest of characters of the string.
     while matched == len(pattern):
       if min_length > window_end - window_start + 1:
         min_length = window_end - window_start + 1
         substr_start = window_start
 
       left_char = str1[window_start]
-      # move onto the next char from the string, and in case we have redundant chars then delete them, so we can get out of the loop
+      # move onto the next char from the string, and in case we have redundant chars then delete them, so we can
+      # get out of the loop
       window_start += 1
       if left_char in char_frequency:
         # Note that we could have redundant matching characters, therefore we'll decrement the
-        # matched count only when a useful occurrence of a matched character is going out of the window, matched-=1 is there to stop coutning the match
+        # matched count only when a useful occurrence of a matched character is going out of the window,
+        # matched-=1 is there to stop coutning the match
         if char_frequency[left_char] == 0:
           # decrease the matched to go out from the loop
           matched -= 1
@@ -88,7 +90,8 @@ def main():
   # print(find_substring("aabdec", "abc"))
   # print(find_substring("abdabca", "abc"))
   # print(find_substring("adcad", "abc"))
-  print(find_substring("ADOBECODEBANC", "ABC"))
+  # print(find_substring("ADOBECODEBANC", "ABC"))
+  print(find_substring("ADOBEDCBANC", "ABC"))
 
 main()
 

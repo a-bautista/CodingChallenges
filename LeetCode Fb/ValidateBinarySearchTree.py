@@ -95,29 +95,36 @@ def print_preorder(tree):
 
 
 # Current solution
-class Solution:
-    def isValidBST(self, root):
-        """
-        :type root: TreeNode
-        :rtype: bool
-        """
-        stack, inorder = [], float('-inf')
+def isValidBST(root):
+    """
+    :type root: TreeNode
+    :rtype: bool
+    """
+    stack, previous = [], float('-inf')
 
-        while stack or root:
-            # Get the children of the node
-            while root:
-                stack.append(root)
-                root = root.left
+    while stack or root:
+        # Get the children of the node from the very left (in-order traversal)
+        while root:
+            stack.append(root)
+            root = root.left
+        root = stack.pop()
+        # If next element is smaller than the previous then it's not BST because the current element cannot be smaller than the previous
+        if root.val <= previous:
+            return False
 
-            root = stack.pop()
-            # If next element in inorder traversal is smaller than the previous one then it's not BST
-            if root.val <= inorder:
-                return False
+        previous = root.val
+        # Get the right children
+        root = root.right
+    return True
 
-            inorder = root.val
-            # Get the right children
-            root = root.right
-        return True
+def main():
+    root = Node(2)
+    root.left = Node(1)
+    root.right = Node(3)
+    res = isValidBST(root)
+    print(res)
+
+main()
 
 '''
     Time complexity: O(N)

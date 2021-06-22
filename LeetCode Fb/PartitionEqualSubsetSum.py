@@ -104,7 +104,7 @@ class Solution:
         return False
 
 def main():
-    s = [1,2,3]
+    s = [1,2,4,5]
     solution = Solution()
     res = solution.canPartition(s)
     print(res)
@@ -112,8 +112,7 @@ def main():
 main()
 
 '''
-Each number in the array can be picked or not picked to form the subset of array to have a target 
-sum. Here we can scan through the array, and store the sums of the subsets that include or not 
-include the current number. We can use a set to store the sums to avoid duplicates.
-
+    Each number in the array can be picked or not picked to form the subset of array to have a target 
+    sum. Here we can scan through the array, and store the sums of the subsets that include or not 
+    include the current number. We can use a set to store the sums to avoid duplicates.
 '''

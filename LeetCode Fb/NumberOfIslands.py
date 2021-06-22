@@ -7,7 +7,7 @@ class Solution(object):
         if not grid or not grid[0]:
             return 0
 
-        mrows, ncolumns = len(grid), len(grid[0])
+        mrows, ncolumns = len(grid), len(grid[0]) # X and Y
         count = 0
         for i in range(mrows):
             for j in range(ncolumns):

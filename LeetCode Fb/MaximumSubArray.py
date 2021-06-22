@@ -23,6 +23,13 @@ def solve(nums):
 
     return max_sum
 
+def main():
+    nums = [-2,1,-3,4,-1,2,1,-5,4]
+    res = solve(nums)
+    print(res)
+
+main()
+
 '''
     Time complexity: O(N)
     Space complexity: O(1)

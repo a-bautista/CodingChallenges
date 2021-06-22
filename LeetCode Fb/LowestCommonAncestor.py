@@ -10,12 +10,12 @@ class Solution:
 
     def __init__(self):
         # Variable to store LCA node.
-        self.ans = None
+        self.lca = None
 
     def lowestCommonAncestor(self, root, p, q):
         # Traverse the tree
         self.recurse_tree(root, p, q)
-        return self.ans
+        return self.lca
 
     def recurse_tree(self, current_node, p, q):
 
@@ -30,11 +30,13 @@ class Solution:
         right = self.recurse_tree(current_node.right, p, q)
 
         # If the current node is one of p or q
+        # if current_node.val == p.val or current_node.val == q.val:
+        #     mid = current_node.val
         mid = current_node.val == p.val or current_node.val == q.val
 
         # If any two of the three flags left, right or mid become True.
         if mid + left + right >= 2:
-            self.ans = current_node.val
+            self.lca = current_node.val
 
         # Return True if either of the three bool values is True.
         return mid or left or right
@@ -56,13 +58,12 @@ def main():
     tree.left.right = TreeNode(5)
     tree.right.left = TreeNode(6)
     tree.right.right = TreeNode(7)
+    tree.right.right.right = TreeNode(8)
     solution_lca = Solution()
-    lca = solution_lca.lowestCommonAncestor(tree, TreeNode(4), TreeNode(5))
+    lca = solution_lca.lowestCommonAncestor(tree, TreeNode(7), TreeNode(8))
 
     #result = tree.lowestCommonAncestor(tree,TreeNode(4), TreeNode(5))
     print("The LCA is : " + str(lca))
-
-
 
 main()
 

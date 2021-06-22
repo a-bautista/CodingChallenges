@@ -13,6 +13,10 @@ Input: [1,null,2,3]
 Output: [1,3,2]
 
 '''
+class TreeNode:
+    def __init__(self, key):
+        self.val = key
+        self.left, self.right = None, None
 
 # recursively
 def inorderTraversal1(self, root):
@@ -45,3 +49,14 @@ def inorderTraversal(root):
         res.append(node.val)
         root = node.right
 
+
+def main():
+    root = TreeNode(1)
+    root.left = TreeNode(2)
+    root.right = TreeNode(3)
+    root.left.left = TreeNode(4)
+    root.left.right = TreeNode(5)
+    res = inorderTraversal(root)
+    print(res)
+
+main()

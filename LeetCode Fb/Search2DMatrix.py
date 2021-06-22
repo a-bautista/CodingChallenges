@@ -9,7 +9,7 @@ def search2DMatrix(matrix, target):
     # binary search
     left, right = 0, m * n - 1
     while left <= right:
-        pivot_idx = (left + right) // 2
+        pivot_idx = left + (right - left) // 2
         # virtually, convert the matrix into a vector
         # pivot_idx // n gets the y location and pivot_idx gets the x location
         # the pivot element contains the real middle number

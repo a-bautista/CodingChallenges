@@ -49,19 +49,18 @@ class Solution:
                 else:
                     # add the 3 values that add up to 0
                     res.append((nums[i], nums[l], nums[r]))
-                    # Avoid repeated values you have accounted for
+                    # edge case avoid counting the values you have already considered into the array, i.e., [-1,1,0,-1,1,0,-1,1,0]
                     while l < r and nums[l] == nums[l + 1]:
                         l += 1
-                    # Avoid repeated values you have accounted for
                     while l < r and nums[r] == nums[r - 1]:
                         r -= 1
-                    # increase the pointers
+                    # increase the pointers to break the loop
                     l += 1
                     r -= 1
         return res
 
 def main():
-    nums = [-5, 2, -1, -2, 3]
+    nums = [-1, 0, 1, 2, -1, -4]
     solution = Solution()
     res = solution.solve(nums)
     print(res)

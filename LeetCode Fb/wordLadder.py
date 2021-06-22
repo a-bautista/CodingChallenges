@@ -8,7 +8,8 @@
 
     Hit -> Hot -> Dot -> Dog -> Cog
 
-    First, you need to start by creating a dictionary with the index of the intermediate word and a list of possible words related to that index
+    First, you need to start by creating a dictionary with the index of the intermediate word and a list of possible
+    words related to that index
 
 
     {'*ot': [],
@@ -26,7 +27,6 @@
     '*it': [],
     'hi*': []})
 
-
 """
 
 
@@ -35,8 +35,8 @@ from collections import defaultdict, deque
 class Solution(object):
     def ladderLength(self, beginWord, endWord, wordList):
 
-        if endWord not in wordList or not endWord or not beginWord or not wordList:
-            return 0
+        # if endWord not in wordList or not endWord or not beginWord or not wordList:
+        #    return 0
 
         # Since all words are of same length.
         L = len(beginWord)
@@ -74,9 +74,11 @@ class Solution(object):
         return 0
 
 def main():
-    beginWord = "hit",
-    endWord = "cog",
-    wordList = ["hot", "dot", "dog", "lot", "log", "cog"]
-    solution = Solution(Solution, beginWord, endWord, wordList)
+    beginWord = "hit"
+    endWord = "cog"
+    wordList = ["hot","dot","dog","lot","log","cog"]
+    solution = Solution()
+    res = solution.ladderLength(beginWord, endWord, wordList)
+    print(res)
 
 main()

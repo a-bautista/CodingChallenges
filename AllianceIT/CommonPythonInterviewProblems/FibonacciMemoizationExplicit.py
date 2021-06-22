@@ -11,6 +11,9 @@ def fiboDP(n):
     if n in memo:
         return memo[n]
 
+    # if n == 0:
+    #     value = ''
+
     if n == 1:
         value = 0
 
@@ -24,8 +27,12 @@ def fiboDP(n):
     return value
 
 def main():
-
-    for i in range(1,101):
+    res = []
+    n = 5
+    for i in range(1,n+1):
+        res.append(fiboDP(i))
         print(i,":",fiboDP(i))
+    print(' '.join(map(str, res)))
+    #print(" ".join(res))
 
 main()
