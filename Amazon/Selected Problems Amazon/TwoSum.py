@@ -1,6 +1,8 @@
 '''
-    A simple implementation uses two iterations. In the first iteration, we add each element's value and its index to the table.
-    Then, in the second iteration we check if each element's complement (target−nums[i]target - nums[i]target−nums[i]) exists in the table.
+    A simple implementation uses two iterations. In the first iteration, 
+    we add each element's value and its index to the table.
+    Then, in the second iteration we check if each element's complement 
+    (target−nums[i]target - nums[i]target−nums[i]) exists in the table.
 
     Beware that the complement must not be nums[i]nums[i]nums[i] itself!
 
